@@ -1,11 +1,11 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
   extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "babel-eslint",
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
@@ -21,12 +21,12 @@ module.exports = {
       "error",
       {
         max: 3,
-        maxBOF: 1
-      }
+        maxBOF: 1,
+      },
     ],
     curly: ["error", "all"], //必须使用 if(){} 中的{}
     indent: ["error", 2], //缩进风格2个空格
-    // semi: ["error", "never"], //结尾不写分号
-    "no-tabs": ["error"] // 禁用 tab
-  }
-};
+    semi: ["warning", "never"], //结尾不写分号
+    "no-tabs": ["error"], // 禁用 tab
+  },
+}

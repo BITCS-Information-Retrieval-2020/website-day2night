@@ -3,12 +3,10 @@
 </template>
 
 <script>
-import SearchBar from "components/home/SearchBar"
+import SearchBar from "common/SearchBar.vue"
 export default {
-  name: "Home",
-  components: {
-    SearchBar,
-  },
+  components: { SearchBar },
+  name: "Result",
   data() {
     return {}
   },

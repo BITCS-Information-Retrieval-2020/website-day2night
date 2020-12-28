@@ -1,7 +1,7 @@
-const path = require("path");
+const path = require("path")
 
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
     proxy: {
       "/host": {
         // 此处的写法，目的是为了 将 /host 替换成 https://www.baidu.com/
-        target: "",
+        target: "https://www.baidu.com/",
         // 允许跨域
         changeOrigin: true,
         ws: true,
@@ -28,6 +28,6 @@ module.exports = {
       .set("common", resolve("src/components/common"))
       .set("components", resolve("src/components"))
       .set("request", resolve("src/request"))
-      .set("store", resolve("src/store"));
+      .set("store", resolve("src/store"))
   },
-};
+}
