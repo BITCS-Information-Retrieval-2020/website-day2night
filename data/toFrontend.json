@@ -1,0 +1,25 @@
+[
+    {
+        "_id": 1, //按照相关度进行排序 数字越小越相关
+        "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
+        "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
+        "abstract": "Recent research finds CNN models...",
+        "publicationOrg": "NeurIPS",
+        "year": 2020,
+        "pdfUrl": "...",
+        "pdfPath": ".../searcher/data/PDFs/xx.pdf",// 绝对路径
+        "publicationUrl": "https://papers.nips.cc/paper/2020/hash/3ad7c2ebb96fcba7cda0cf54a2e802f5-Abstract.html",
+        "codeUrl": "https://github.com/zjysteven/DVERGE",
+        "datasetUrl": "https://drive.google.com/drive/folders/1i96Bk_bCWXhb7afSNp1t3woNjO1kAMDH?usp=sharing",
+        "videoUrl": "",
+        "videoPath": ".../searcher/data/videos/xx.*",// 绝对路径
+        "pdfText": "Alternatively, ensemble methods are proposed to induce sub-models...",
+        "videoStruct": [
+            {
+                "timeStart": "hh-mm-ss",
+                "timeEnd": "hh-mm-ss",
+                "sentence": "Only small clean accuracy drop is observed in the process."
+            }
+        ]
+    }
+]
