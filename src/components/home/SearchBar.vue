@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import AdvancedSearch from "./AdvancedSearch.vue"
+import AdvancedSearch from "common/AdvancedSearch.vue"
 
 const checkOptions = ["标题", "作者", "摘要"]
 export default {
