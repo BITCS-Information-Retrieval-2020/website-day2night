@@ -1,16 +1,18 @@
-<template></template>
+<template>
+  <search-bar></search-bar>
+</template>
 
 <script>
-import SearchBar from "common/SearchBar";
+import SearchBar from "common/SearchBar"
 export default {
   name: "Detail",
   components: {
     SearchBar,
   },
   data() {
-    return {};
+    return {}
   },
-};
+}
 </script>
 
 <style>

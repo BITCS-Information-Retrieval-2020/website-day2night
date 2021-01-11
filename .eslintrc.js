@@ -26,7 +26,7 @@ module.exports = {
     ],
     curly: ["error", "all"], //必须使用 if(){} 中的{}
     indent: ["error", 2], //缩进风格2个空格
-    semi: ["warning", "never"], //结尾不写分号
+    semi: ["warn", "never"], //结尾不写分号
     "no-tabs": ["error"], // 禁用 tab
   },
 }
