@@ -23,7 +23,12 @@
             <template slot="prepend">
               <el-popover placement="bottom-start" trigger="click">
                 <advanced-search></advanced-search>
-                <el-button slot="reference" type="text" id="advancedBtn"
+                <el-button
+                  slot="reference"
+                  type="text"
+                  id="advancedBtn"
+                  @advancedSearchForm="getAdvancedSearchForm"
+                  @click="advancedSearch"
                   >高级检索</el-button
                 >
               </el-popover>
@@ -94,6 +99,8 @@ export default {
     }
   },
   methods: {
+    getAdvancedSearchForm() {},
+
     handleSelect(item) {
       console.log(item)
     },

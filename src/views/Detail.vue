@@ -1,5 +1,5 @@
 <template>
-  <search-bar></search-bar>
+  <search-bar @searchResults="searchResults"></search-bar>
 </template>
 
 <script>
@@ -11,6 +11,12 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    // 获取搜索结果
+    searchResults(results) {
+      console.log(results)
+    },
   },
 }
 </script>

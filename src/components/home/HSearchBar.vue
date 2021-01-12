@@ -23,7 +23,12 @@
             <template slot="prepend">
               <el-popover placement="bottom-start" trigger="click">
                 <advanced-search></advanced-search>
-                <el-button slot="reference" type="text" id="HadvancedBtn"
+                <el-button
+                  slot="reference"
+                  type="text"
+                  id="HadvancedBtn"
+                  @click="advancedSearch"
+                  @advancedSearchForm="getAdvancedSearchForm"
                   >高级检索</el-button
                 >
               </el-popover>
@@ -31,7 +36,7 @@
           </el-autocomplete>
         </el-col>
         <el-col :span="4" style="margin: 0px">
-          <el-button id="HsearchBtn">
+          <el-button id="HsearchBtn" @click="search">
             <span id="HsearchText">
               <i class="el-icon-search" style="margin-right: 15px"></i>搜索
             </span>
@@ -55,6 +60,7 @@
 
 <script>
 import AdvancedSearch from "common/AdvancedSearch.vue"
+import { searchByKeywordApi, searchSuggest } from "request"
 
 const checkOptions = ["标题", "作者", "摘要"]
 export default {
@@ -65,6 +71,7 @@ export default {
       input: "",
       checkedList: checkOptions,
       checkList: checkOptions,
+      advancedSearchForm: {},
 
       inputAdvices: [
         { value: "三全鲜食（北新泾店）", address: "长宁区新渔路144号" },
@@ -94,10 +101,39 @@ export default {
     }
   },
   methods: {
+    //搜索功能
+    search() {
+      let results = []
+      searchByKeywordApi()
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      this.$emit("searchResults", results)
+    },
+    getAdvancedSearchForm(form) {
+      console.log(form)
+      this.advancedSearchForm = form
+    },
+    AdvancedSearch() {
+      let results = []
+      this.$emit("searchResults", results)
+    },
+
+    //以下都是搜索补全
     handleSelect(item) {
       console.log(item)
     },
     querySearch(queryString, cb) {
+      searchSuggest(queryString)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       let restaurants = this.inputAdvices
       let results = queryString
         ? restaurants.filter(this.createFilter(queryString))
@@ -125,7 +161,7 @@ export default {
   color: white;
   text-align: left;
   margin: 0;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
 }
 #HlogoCol i {
@@ -159,7 +195,7 @@ export default {
   width: 100%;
 }
 .el-input .el-input__count {
-  align-items: baseline;
+  align-items: baseline !important;
 }
 #HadvancedBtn {
   font-size: 18px;

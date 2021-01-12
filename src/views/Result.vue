@@ -1,5 +1,8 @@
 <template>
-  <search-bar></search-bar>
+  <search-bar @searchResults="searchResults"></search-bar>
+  <!-- 这部分写html代码 -->
+
+  <!--  -->
 </template>
 
 <script>
@@ -8,10 +11,25 @@ export default {
   components: { SearchBar },
   name: "Result",
   data() {
-    return {}
+    return {
+      results: [],
+    }
+  },
+  methods: {
+    // 获取搜索结果
+    searchResults(results) {
+      console.log(results)
+    },
+  },
+  mounted() {
+    //获取搜索结果
+    this.results = this.$route.params.results
   },
 }
 </script>
 
 <style>
+/* 这部分写css代码 */
+
+/*  */
 </style>

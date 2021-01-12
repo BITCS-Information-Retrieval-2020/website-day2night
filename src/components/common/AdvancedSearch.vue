@@ -1,13 +1,13 @@
 <template>
   <el-form id="AdForm" :model="form" label-width="80px">
     <el-form-item label="标题">
-      <el-input></el-input>
+      <el-input v-model="form.title"></el-input>
     </el-form-item>
     <el-form-item label="作者">
-      <el-input></el-input>
+      <el-input v-model="form.author"></el-input>
     </el-form-item>
     <el-form-item label="摘要">
-      <el-input></el-input>
+      <el-input v-model="form.abstract"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button id="subBtn" @click="onSubmit">搜索</el-button>
@@ -24,12 +24,14 @@ export default {
         title: "",
         author: "",
         abstract: "",
+        operater: ["", "", ""],
       },
     }
   },
   methods: {
     onSubmit() {
       console.log(this.form)
+      this.$emit("advancedSearchForm", this.form)
     },
   },
 }
