@@ -224,7 +224,7 @@ JSON
  ### 4. 下载
 描述：在论文详情页，用户可以下载论文
 #### URL   
-GET  /download/pdf？
+GET  /download/pdf
 #### HTTP请求方式
 **GET**  
 
@@ -256,7 +256,7 @@ JSON
 描述：自动补全服务是指用户在搜索框中输入部分文字时，能自动提示对应的文本，例如当用户输入“smart”时，提示以“smart”开头的热门查询词，方便用户操作
 
 #### URL   
-GET   /suggest/home?
+GET   /suggest/home
 #### HTTP请求方式
 **GET**  
 
