@@ -1,13 +1,13 @@
 <template>
-  <search-bar></search-bar>
+  <h-search-bar></h-search-bar>
 </template>
 
 <script>
-import SearchBar from "components/home/SearchBar"
+import HSearchBar from "components/home/HSearchBar"
 export default {
   name: "Home",
   components: {
-    SearchBar,
+    HSearchBar,
   },
   data() {
     return {}

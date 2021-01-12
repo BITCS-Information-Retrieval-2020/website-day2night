@@ -120,6 +120,7 @@ export default {
 <style>
 #logoCol {
   padding-block: 15px;
+  margin-right: 20px;
 }
 #logoCol p {
   color: white;
@@ -129,7 +130,6 @@ export default {
 }
 #logoCol i {
   color: white;
-  text-align: left;
   margin: 0;
   font-size: 90px;
   font-weight: 900;
