@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+
 import redis
 import json
 import re
@@ -10,40 +10,76 @@ from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
-from .fake import get_detail,get_title,searchpapers
+from .fake import get_detail, get_title, searchpapers
 
 
-main_rds = redis.StrictRedis(host='localhost',port=6379,db=0,password='')
+main_rds = redis.StrictRedis(host='localhost', port=6379, db=0, password='')
 
 
 def detail(request):
     id = request.GET.get('id')
-    main_rds.zincrby('hot',1,id)
-    data=get_detail(id)
+    main_rds.zincrby('hot', 1, id)
+    data = get_detail(id)
     return HttpResponse(data)
 
 
 def hot(request):
     num = int(request.GET.get('num'))
     if not num:
-        num=5
-    if num<0:
+        num = 5
+    if num < 0:
         return HttpResponse('Error! num can not < 1')
-    hot_list=main_rds.zrevrange('hot', 0, num-1, withscores=False)
-    data=[]
+    hot_list = main_rds.zrevrange('hot', 0, num - 1, withscores=False)
+    data = []
     for id in hot_list:
         data.append(get_title(id.decode()))
-    data=json.dumps(data)
+    data = json.dumps(data)
     return HttpResponse(data)
 
 
 def results(request):
+    # from ScienceSearcher.SearchEngine import SearchEngine
+
+    # initialization
+    # se = SearchEngine(download_server_ip='xxx.xxx.xxx.xxx',
+    #                   download_server_port=5000,
+    #                   download_client_ip='xxx.xxx.xxx.xxx',
+    #         s          download_client_port=9001,
+    #                   es_ip='xxx.xxx.xxx.xxx',
+    #                   es_port=9200,
+    #                   index_name='xxx',
+    #                   video_index_name='xxx')
+
+    # GET type and query
     type1 = int(request.GET.get('type'))
-    req = request.GET.get('query')
-    papers = searchpapers(type=type1, req=req, topnum=100)
+    q = request.GET.get('query')
+    # generate dict
+    query = {'top_number': 300}
+    if int(type1) == 1:
+        # 后端测试使用q
+        q = {
+            "title": "GNN",
+            "author": "Hinton",
+            "abstract": "",
+            "content": "this paper proposed",
+            "operator": ["OR", "AND", "", "NOT"],
+        }
+        operator = q["operator"]
+        q.pop("operator")
+        query["type"] = int(type1)
+        query["query_text"] = q
+        query["operator"] = operator
+    else:
+        query["type"] = int(type1)
+        query["query_text"] = q
+
+    # 测试使用
+    papers = searchpapers(query)
+    # 正式使用
+    # papers = se.search(query)
     paginator = Paginator(papers, 10)
     page = request.GET.get('page')
-    response = []
+    response = [paginator.num_pages]
     try:
         contacts = paginator.page(page)
         for contact in contacts:
@@ -63,7 +99,7 @@ def results(request):
         # response['list'] = json.loads(serializers.serialize("json", contacts))
     # return HttpResponse(json.dump(response, cls=DjangoJSONEncoder), content_type='application/json')
     return JsonResponse(response, safe=False)
-    
+
 
 def downloadView(request):
     # 获取pdf的id
@@ -95,6 +131,3 @@ def ajax_suggest(request):
         res['resultData'] = result
     # 返回
     return JsonResponse(res)
-    
-    
-
