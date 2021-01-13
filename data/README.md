@@ -278,8 +278,8 @@ JSON
 |参数|类型|描述|
 |---|---|---|
 |status|string|执行结果，OK为成功，FALL为失败|
-|resultcount| int|自动补全结果条数， 如搜索失败，则resultcount值为-1|
-|resultdata|string|补全结果，为一个LIST，每一项为一个suggest的字符串|
+|resultCount| int|自动补全结果条数， 如搜索失败，则resultcount值为-1|
+|resultData|string|补全结果，为一个LIST，每一项为一个suggest的字符串|
 
 ##### 示例
 ```
@@ -290,8 +290,8 @@ JSON
 //返回：
 {
     "status":"OK",
-    "resultcount":10,
-    "suggestdata":[
+    "resultCount":10,
+    "suggestData":[
 	"smart car",
 	"smartguys",
 	"samrt and clever"
