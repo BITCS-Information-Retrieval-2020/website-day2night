@@ -22,6 +22,7 @@ def detail(request):
     data=get_detail(id)
     return HttpResponse(data)
 
+
 def hot(request):
     num = int(request.GET.get('num'))
     if not num:
@@ -34,6 +35,7 @@ def hot(request):
         data.append(get_title(id.decode()))
     data=json.dumps(data)
     return HttpResponse(data)
+
 
 def results(request):
     type1 = int(request.GET.get('type'))
@@ -61,4 +63,38 @@ def results(request):
         # response['list'] = json.loads(serializers.serialize("json", contacts))
     # return HttpResponse(json.dump(response, cls=DjangoJSONEncoder), content_type='application/json')
     return JsonResponse(response, safe=False)
+    
+
+def downloadView(request):
+    # 获取pdf的id
+    id = int(request.GET.get('_id'))
+    res = {
+        "pdfPath": ".../searcher/data/PDFs/xx.pdf",
+        "videoPath": ".../searcher/data/videos/xx.*",
+    }
+    # 暂时使用假数据，对接后使用下边一句
+    return HttpResponse(res["pdfPath"])
+    # return HttpResponse(se.search_by_id(id)["pdfPath"])
+
+
+def ajax_suggest(request):
+    query = request.GET.get('query')
+    # auto-complete
+    # 暂时使用假数据, 对接后使用后一句
+    result = ["smart", "smart guys", "smart car", "smart and clever"]
+    # result = se.auto_complete(query)
+    # 先定义出返回数据的格式
+    res = {"status": None, "resultCount": None, "resultData": None}
+    # 执行结果，OK表示成功，FALL表示失败
+    if len(result) == 0:
+        res["status"] = "FALL"
+        res['resultCount'] = -1
+    else:
+        res["status"] = "OK"
+        res['resultCount'] = len(result)
+        res['resultData'] = result
+    # 返回
+    return JsonResponse(res)
+    
+    
 

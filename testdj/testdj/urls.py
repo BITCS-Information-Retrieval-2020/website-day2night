@@ -20,5 +20,7 @@ from . import views
 urlpatterns = [
     path('detail/', views.detail, name='detail'),
     path('hot/', views.hot, name='hot'),
-    path(r'results/', views.results, name='results')
+    path(r'results/', views.results, name='results'),
+    path('download/pdf/', views.downloadView, name='download'),
+    path('suggest/home/', views.ajax_suggest, name='suggest'),
 ]
