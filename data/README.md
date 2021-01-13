@@ -34,9 +34,10 @@ JSON
             "title": "GNN",
             "author": "Hinton",
             "abstract": "",
-            "content": "this paper proposed ..."
-        },
-        "operator": ["OR", "AND", "", "NOT"]
+            "content": "this paper proposed ...",
+	    "operator": ["OR", "AND", "", "NOT"]
+        }
+        
     }
     // type 2 表示视频定位
     {
