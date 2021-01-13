@@ -57,13 +57,13 @@ def results(request):
     query = {'top_number': 300}
     if int(type1) == 1:
         # 后端测试使用q
-        q = {
-            "title": "GNN",
-            "author": "Hinton",
-            "abstract": "",
-            "content": "this paper proposed",
-            "operator": ["OR", "AND", "", "NOT"],
-        }
+        # q = {
+        #     "title": "GNN",
+        #     "author": "Hinton",
+        #     "abstract": "",
+        #     "content": "this paper proposed",
+        #     "operator": ["OR", "AND", "", "NOT"],
+        # }
         operator = q["operator"]
         q.pop("operator")
         query["type"] = int(type1)
