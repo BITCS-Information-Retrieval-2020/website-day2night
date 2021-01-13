@@ -22,13 +22,10 @@
           >
             <template slot="prepend">
               <el-popover placement="bottom-start" trigger="click">
-                <advanced-search></advanced-search>
-                <el-button
-                  slot="reference"
-                  type="text"
-                  id="HadvancedBtn"
-                  @click="advancedSearch"
-                  @advancedSearchForm="getAdvancedSearchForm"
+                <advanced-search
+                  @advancedSearch="advancedSearch"
+                ></advanced-search>
+                <el-button slot="reference" type="text" id="HadvancedBtn"
                   >高级检索</el-button
                 >
               </el-popover>
@@ -103,7 +100,6 @@ export default {
   methods: {
     //搜索功能
     search() {
-      let results = []
       let query = {
         type: "",
         page: "1",
@@ -121,15 +117,15 @@ export default {
           content: "",
         }
         if (this.checkedList.indexOf("标题") > -1) {
-          operator[0] = "AND"
+          operator[0] = "OR"
           tempQuery.titile = this.input
         }
         if (this.checkedList.indexOf("作者") > -1) {
-          operator[1] = "AND"
+          operator[1] = "OR"
           tempQuery.author = this.input
         }
         if (this.checkedList.indexOf("摘要") > -1) {
-          operator[2] = "AND"
+          operator[2] = "OR"
           tempQuery.abstract = this.input
         }
         tempQuery.operator = operator
@@ -137,23 +133,29 @@ export default {
         query.query = tempQuery
         // console.log(query)
       }
+      this.sendSearch(query)
+    },
+
+    sendSearch(query) {
       searchByKeywordApi(query)
         .then((res) => {
           // console.log(res.data)
-          results = res.data
+          let results = res.data
           this.$emit("searchResults", results)
         })
         .catch((error) => {
           console.log(error)
         })
     },
-    getAdvancedSearchForm(form) {
+
+    advancedSearch(form) {
       console.log(form)
-      this.advancedSearchForm = form
-    },
-    advancedSearch() {
-      let results = []
-      this.$emit("searchResults", results)
+      let query = {
+        type: "1",
+        page: "1",
+        query: form,
+      }
+      this.sendSearch(query)
     },
 
     //以下都是搜索补全

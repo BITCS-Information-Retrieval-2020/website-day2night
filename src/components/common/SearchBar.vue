@@ -22,13 +22,10 @@
           >
             <template slot="prepend">
               <el-popover placement="bottom-start" trigger="click">
-                <advanced-search></advanced-search>
-                <el-button
-                  slot="reference"
-                  type="text"
-                  id="advancedBtn"
-                  @advancedSearchForm="getAdvancedSearchForm"
-                  @click="advancedSearch"
+                <advanced-search
+                  @advancedSearch="advancedSearch"
+                ></advanced-search>
+                <el-button slot="reference" type="text" id="advancedBtn"
                   >高级检索</el-button
                 >
               </el-popover>
@@ -71,7 +68,6 @@ export default {
       input: "",
       checkedList: checkOptions,
       checkList: checkOptions,
-      advancedSearchForm: {},
 
       inputAdvices: [
         { value: "三全鲜食（北新泾店）", address: "长宁区新渔路144号" },
@@ -102,7 +98,6 @@ export default {
   },
   methods: {
     search() {
-      let results = []
       let query = {
         type: "",
         page: "1",
@@ -136,10 +131,13 @@ export default {
         query.query = tempQuery
         // console.log(query)
       }
+      this.sendSearch(query)
+    },
+    sendSearch(query) {
       searchByKeywordApi(query)
         .then((res) => {
           // console.log(res.data)
-          results = res.data
+          let results = res.data
           this.$emit("searchResults", results)
         })
         .catch((error) => {
@@ -147,8 +145,13 @@ export default {
         })
     },
 
-    getAdvancedSearchForm(form) {
-      this.advancedSearchForm = form
+    advancedSearch(form) {
+      let query = {
+        type: "1",
+        page: "1",
+        query: form,
+      }
+      this.sendSearch(query)
     },
 
     handleSelect(item) {

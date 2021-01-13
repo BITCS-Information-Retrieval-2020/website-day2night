@@ -21,7 +21,7 @@ export default {
   methods: {
     // 获取搜索结果
     searchResults(results) {
-      console.log(results)
+      // console.log(results)
       this.results = results
     },
   },
