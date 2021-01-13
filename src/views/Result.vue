@@ -1,8 +1,11 @@
 <template>
-  <search-bar @searchResults="searchResults"></search-bar>
-  <!-- 这部分写html代码 -->
+  <div>
+    <search-bar @searchResults="searchResults"></search-bar>
+    {{ results }}
+    <!-- 这部分写html代码 -->
 
-  <!--  -->
+    <!--  -->
+  </div>
 </template>
 
 <script>
@@ -19,6 +22,7 @@ export default {
     // 获取搜索结果
     searchResults(results) {
       console.log(results)
+      this.results = results
     },
   },
   mounted() {

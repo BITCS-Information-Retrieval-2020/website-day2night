@@ -1,14 +1,14 @@
 import axios from "axios"
 
 const HOST = "/host"
-// const HOST = "10.63.185.189:8000";
+// const HOST = "http://10.63.185.189:8000"
 
 const base = {
   // paper: "/api/papers",
-  results: "/results",
-  hot: "/hot",
-  detail: "/detail",
-  suggest: "/suggest/home",
+  results: "/results/",
+  hot: "/hot/",
+  detail: "/detail/",
+  suggest: "/suggest/home/",
 }
 
 const request = axios.create({
@@ -36,9 +36,18 @@ export function searchByKeywordApi(query) {
   })
 }
 
-export function searchSuggest(query) {
+export function searchSuggestApi(query) {
   return request({
     url: base.suggest,
+    method: "get",
+    params: query,
+    responseType: "json",
+  })
+}
+
+export function hotApi(query) {
+  return request({
+    url: base.hot,
     method: "get",
     params: query,
     responseType: "json",

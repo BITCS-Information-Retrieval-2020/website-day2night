@@ -24,7 +24,7 @@ export default {
         title: "",
         author: "",
         abstract: "",
-        operater: ["", "", ""],
+        operater: ["", "", "", ""],
       },
     }
   },

@@ -36,7 +36,7 @@
           </el-autocomplete>
         </el-col>
         <el-col :span="4" style="margin: 0px">
-          <el-button id="searchBtn">
+          <el-button id="searchBtn" @click="search">
             <span id="searchText">
               <i class="el-icon-search" style="margin-right: 15px"></i>搜索
             </span>
@@ -60,6 +60,7 @@
 
 <script>
 import AdvancedSearch from "./AdvancedSearch.vue"
+import { searchByKeywordApi } from "request"
 
 const checkOptions = ["标题", "作者", "摘要"]
 export default {
@@ -70,6 +71,7 @@ export default {
       input: "",
       checkedList: checkOptions,
       checkList: checkOptions,
+      advancedSearchForm: {},
 
       inputAdvices: [
         { value: "三全鲜食（北新泾店）", address: "长宁区新渔路144号" },
@@ -99,7 +101,55 @@ export default {
     }
   },
   methods: {
-    getAdvancedSearchForm() {},
+    search() {
+      let results = []
+      let query = {
+        type: "",
+        page: "1",
+      }
+      if (this.checkedList.length == this.checkList.length) {
+        query.type = "0"
+        query.query = this.input
+        console.log(query)
+      } else {
+        let operator = ["", "", "", ""]
+        let tempQuery = {
+          titile: "",
+          author: "",
+          abstract: "",
+          content: "",
+        }
+        if (this.checkedList.indexOf("标题") > -1) {
+          operator[0] = "AND"
+          tempQuery.titile = this.input
+        }
+        if (this.checkedList.indexOf("作者") > -1) {
+          operator[1] = "AND"
+          tempQuery.author = this.input
+        }
+        if (this.checkedList.indexOf("摘要") > -1) {
+          operator[2] = "AND"
+          tempQuery.abstract = this.input
+        }
+        tempQuery.operator = operator
+        query.type = "1"
+        query.query = tempQuery
+        // console.log(query)
+      }
+      searchByKeywordApi(query)
+        .then((res) => {
+          // console.log(res.data)
+          results = res.data
+          this.$emit("searchResults", results)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+
+    getAdvancedSearchForm(form) {
+      this.advancedSearchForm = form
+    },
 
     handleSelect(item) {
       console.log(item)

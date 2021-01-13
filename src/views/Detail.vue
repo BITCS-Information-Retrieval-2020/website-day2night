@@ -1,5 +1,7 @@
 <template>
-  <search-bar @searchResults="searchResults"></search-bar>
+  <div>
+    <search-bar @searchResults="searchResults"></search-bar>
+  </div>
 </template>
 
 <script>
@@ -16,6 +18,7 @@ export default {
     // 获取搜索结果
     searchResults(results) {
       console.log(results)
+      this.$router.push({ name: "Result", params: { results: results } })
     },
   },
 }

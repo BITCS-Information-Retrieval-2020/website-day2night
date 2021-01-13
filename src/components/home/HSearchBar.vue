@@ -14,7 +14,7 @@
             id="Hinput"
             placeholder="请输入检索关键字"
             v-model="input"
-            maxlength="200"
+            :maxlength="200"
             show-word-limit
             :fetch-suggestions="querySearch"
             :trigger-on-focus="false"
@@ -60,7 +60,7 @@
 
 <script>
 import AdvancedSearch from "common/AdvancedSearch.vue"
-import { searchByKeywordApi, searchSuggest } from "request"
+import { searchByKeywordApi, searchSuggestApi } from "request"
 
 const checkOptions = ["标题", "作者", "摘要"]
 export default {
@@ -104,20 +104,54 @@ export default {
     //搜索功能
     search() {
       let results = []
-      searchByKeywordApi()
+      let query = {
+        type: "",
+        page: "1",
+      }
+      if (this.checkedList.length == this.checkList.length) {
+        query.type = "0"
+        query.query = this.input
+        console.log(query)
+      } else {
+        let operator = ["", "", "", ""]
+        let tempQuery = {
+          titile: "",
+          author: "",
+          abstract: "",
+          content: "",
+        }
+        if (this.checkedList.indexOf("标题") > -1) {
+          operator[0] = "AND"
+          tempQuery.titile = this.input
+        }
+        if (this.checkedList.indexOf("作者") > -1) {
+          operator[1] = "AND"
+          tempQuery.author = this.input
+        }
+        if (this.checkedList.indexOf("摘要") > -1) {
+          operator[2] = "AND"
+          tempQuery.abstract = this.input
+        }
+        tempQuery.operator = operator
+        query.type = "1"
+        query.query = tempQuery
+        // console.log(query)
+      }
+      searchByKeywordApi(query)
         .then((res) => {
-          console.log(res)
+          // console.log(res.data)
+          results = res.data
+          this.$emit("searchResults", results)
         })
         .catch((error) => {
           console.log(error)
         })
-      this.$emit("searchResults", results)
     },
     getAdvancedSearchForm(form) {
       console.log(form)
       this.advancedSearchForm = form
     },
-    AdvancedSearch() {
+    advancedSearch() {
       let results = []
       this.$emit("searchResults", results)
     },
@@ -127,7 +161,7 @@ export default {
       console.log(item)
     },
     querySearch(queryString, cb) {
-      searchSuggest(queryString)
+      searchSuggestApi(queryString)
         .then((res) => {
           console.log(res)
         })
