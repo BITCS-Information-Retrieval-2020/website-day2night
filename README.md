@@ -1,6 +1,3 @@
-# website-day2night
-website-day2night created by GitHub Classroom
-
 # 接口文档
 ### 1. 检索结果页
 描述：从前端接收的数据形式，即前端的请求格式
