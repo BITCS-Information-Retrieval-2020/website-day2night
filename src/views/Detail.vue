@@ -1,11 +1,13 @@
 <template>
   <div>
     <search-bar @searchResults="searchResults"></search-bar>
+    {{ detail }}
   </div>
 </template>
 
 <script>
 import SearchBar from "common/SearchBar"
+import { detailApi } from "request"
 export default {
   name: "Detail",
   components: {
@@ -24,13 +26,15 @@ export default {
     },
   },
   mounted() {
-    // let id = this.$route.params.id
-    // let query = {_id:id}
-    // detailApi(query).then((res)=>{
-    //   this.detail = res.data
-    // }).catch((err)=>{
-    //   console.log(err);
-    // })
+    let id = this.$route.params.id
+    let query = { id: id }
+    detailApi(query)
+      .then((res) => {
+        this.detail = res.data
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }
 </script>
