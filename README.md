@@ -45,8 +45,12 @@ JSON
     }
 
 #### 返回结果说明
-返回 [{},{},{},……]
+返回 [pagesnum,{},{},{},……]
+| 参数       | 类型     | 描述     |
+| ------------- |:----------:| ---------:|
+| pagesnum    | int    |分页总页数 |
 
+每一个{}中
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
 | id         | string    |文章唯一id |
@@ -67,7 +71,8 @@ JSON
 ##### 示例
 
 
-     [   {
+     [   30,
+      {
             "_id": 1, //按照相关度进行排序 数字越小越相关
             "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
             "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
@@ -91,7 +96,7 @@ JSON
             ]
         },
        {
-            "_id": 1, //按照相关度进行排序 数字越小越相关
+            "_id": 2, //按照相关度进行排序 数字越小越相关
             "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
             "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
             "abstract": "Recent research finds CNN models...",
