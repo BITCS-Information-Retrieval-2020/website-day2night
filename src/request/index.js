@@ -53,3 +53,12 @@ export function hotApi(query) {
     responseType: "json",
   })
 }
+
+export function detailApi(query) {
+  return request({
+    url: base.detail,
+    method: "get",
+    params: query,
+    responseType: "json",
+  })
+}

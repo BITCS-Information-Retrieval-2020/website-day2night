@@ -12,7 +12,9 @@ export default {
     SearchBar,
   },
   data() {
-    return {}
+    return {
+      detail: {},
+    }
   },
   methods: {
     // 获取搜索结果
@@ -20,6 +22,15 @@ export default {
       // console.log(results)
       this.$router.push({ name: "Result", params: { results: results } })
     },
+  },
+  mounted() {
+    // let id = this.$route.params.id
+    // let query = {_id:id}
+    // detailApi(query).then((res)=>{
+    //   this.detail = res.data
+    // }).catch((err)=>{
+    //   console.log(err);
+    // })
   },
 }
 </script>
