@@ -1,13 +1,16 @@
 <template>
   <div id="container">
     <search-bar @searchResults="searchResults"></search-bar>
+
     <introducton></introducton>
+    {{ detail }}
   </div>
 </template>
 
 <script>
 import SearchBar from "common/SearchBar"
 import introducton from "components/detail/introducton";
+import { detailApi } from "request"
 export default {
   name: "Detail",
   components: {
@@ -16,10 +19,8 @@ export default {
   },
   data() {
     return {
-
-
-detail: {},}
-
+      detail: {}
+    }
   },
   methods: {
     // 获取搜索结果
@@ -29,13 +30,15 @@ detail: {},}
     },
   },
   mounted() {
-    // let id = this.$route.params.id
-    // let query = {_id:id}
-    // detailApi(query).then((res)=>{
-    //   this.detail = res.data
-    // }).catch((err)=>{
-    //   console.log(err);
-    // })
+    let id = this.$route.params.id
+    let query = { id: id }
+    detailApi(query)
+      .then((res) => {
+        this.detail = res.data
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }
 </script>
