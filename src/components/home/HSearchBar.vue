@@ -117,7 +117,7 @@ export default {
           let results = {
             results: res.data.resultData,
             query: query,
-            totalPage: res.data.totalPage,
+            totalNum: res.data.totalNum,
           }
           this.$emit("searchResults", results)
         })

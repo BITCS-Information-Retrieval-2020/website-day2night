@@ -1,7 +1,7 @@
 <template>
   <a href="#" @click="toDetail" style="text-decoration: none">
     <div class="resultItemBox">
-      {{ paper }}
+      <!-- {{ paper }} -->
       <!-- 第一个文章题目 -->
       <el-row class="titleRow">
         <p>
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     toDetail() {
-      alert(this.paper._id)
+      //   alert(this.paper._id)
       this.$router.push({ name: "Detail", params: { id: this.paper._id } })
     },
   },
