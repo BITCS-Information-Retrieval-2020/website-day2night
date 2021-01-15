@@ -6,7 +6,7 @@
     <!-- {{ currentQuery }} -->
 
     <el-row id="main">
-      <el-col id="side" :span="5" style="background-color: red">
+      <el-col id="side" :span="5">
         <el-row id="orgList">
           <p><span class="titlet">来源</span></p>
           <p v-for="(org, index) in orgList" :key="index">
@@ -28,6 +28,7 @@
           :key="index"
           :paper="paper"
         ></result-item>
+        </el-col>
         <el-pagination
           layout="total,prev, pager, next"
           :total="totalNum"
@@ -37,7 +38,7 @@
           @current-change="currentChange"
         >
         </el-pagination>
-      </el-col>
+      
     </el-row>
   </div>
 </template>
@@ -174,14 +175,43 @@ a {
   text-decoration: none;
 }
 #main {
-  background-color: blue;
+    background-color:rgba(242, 242, 242, 1);
 }
 #side {
+  top:10px;
+  position:absolute;
+  left:50px;
+  text-align:left;
+
 }
-#orgList {
-}
+
 .titlet {
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+  background-color:rgba(255, 255, 255, 0);
+  text-align:left;
+  font-weight: 600;
+  font-size: 18px;
+
 }
+
 .listItem {
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+  background-color:rgba(255, 255, 255, 0);
+  color: black;
+  text-align:left;
+  font-weight: 500;
+}
+.el-pagination{
+  position: absolute;
+  bottom: 0px;
+  display:block ;
+  text-align: center;
+  height: 30px;
+  width: 100%;
+
 }
 </style>
