@@ -14,7 +14,7 @@
             <el-tabs>
               <el-tab-pane label="热门论文" />
             </el-tabs>
-            <v-indexVideo />
+            <!-- <v-indexVideo /> -->
           </el-col>
         </el-row>
         <el-row class="marginLeft" :gutter="15">
