@@ -3,7 +3,10 @@
     <h-search-bar @searchResults="searchResults"></h-search-bar>
     <p>热门论文表</p>
     <ol>
-      <li v-for="(item, index) in hotList" :key="index">{{ item.title }}</li>
+      <li v-for="(item, index) in hotList" :key="index">
+        {{ item.title }}
+        <img :src="item.image" />
+      </li>
     </ol>
   </div>
 </template>
