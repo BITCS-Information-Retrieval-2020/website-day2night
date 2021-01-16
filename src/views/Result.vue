@@ -8,17 +8,21 @@
       <el-col id="side" :span="5">
         <el-row id="orgList">
           <p><span class="titlet">来源</span></p>
-          <p v-for="(org, index) in orgList" :key="index">
+          <div class="listItemBox" v-for="(org, index) in orgList" :key="index">
             <a class="listItem" href="#" @click="slectByOrg(org)">{{ org }}</a>
-          </p>
+          </div>
         </el-row>
         <el-row id="yearList">
           <p><span class="titlet">年度</span></p>
-          <p v-for="(year, index) in yearList" :key="index">
+          <div
+            class="listItemBox"
+            v-for="(year, index) in yearList"
+            :key="index"
+          >
             <a class="listItem" href="#" @click="selectByYear(year)">{{
               year
             }}</a>
-          </p>
+          </div>
         </el-row>
       </el-col>
       <el-col id="resultList" :span="19">
@@ -178,6 +182,7 @@ a {
   padding-bottom: 10px;
   display: block;
   flex-wrap: wrap;
+  height: 1855px;
 }
 #side {
   top: 10px;
@@ -195,7 +200,9 @@ a {
   font-weight: 600;
   font-size: 18px;
 }
-
+.listItemBox {
+  height: 30px;
+}
 .listItem {
   border-width: 0px;
   word-wrap: break-word;

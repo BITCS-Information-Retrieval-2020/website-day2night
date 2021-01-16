@@ -18,7 +18,7 @@
         </p>
         <p class="text">
           <span class="textSpan">
-            出版组织：{{ org }}; <span class="blank15"></span>时间：{{ year }}
+            时间：{{ year }}<span class="blank15"></span>出版组织：{{ org }}
           </span>
         </p>
         <!--<p class="text">
@@ -98,6 +98,7 @@ export default {
   border-radius: 0px;
   text-align: left;
   padding-left: 10%;
+  height: 215px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .resultItemBox:hover {
@@ -121,7 +122,7 @@ span {
 .titleSpan {
   background-color: rgba(255, 255, 255, 0);
   color: #4a83e7;
-  font-weight: 540;
+  font-weight: 500;
   font-style: normal;
   font-size: 20px;
   word-break: normal;
