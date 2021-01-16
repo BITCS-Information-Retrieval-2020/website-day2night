@@ -24,7 +24,8 @@ export default {
         title: "",
         author: "",
         abstract: "",
-        operater: ["", "", "", ""],
+        content: "",
+        operator: ["", "", "", ""],
       },
     }
   },
@@ -32,14 +33,15 @@ export default {
     onSubmit() {
       // console.log(this.form)
       if (this.form.title != "") {
-        this.form.operater[0] = "AND"
+        this.form.operator[0] = "AND"
       }
       if (this.form.author != "") {
-        this.form.operater[0] = "AND"
+        this.form.operator[1] = "AND"
       }
       if (this.form.abstract != "") {
-        this.form.operater[0] = "AND"
+        this.form.operator[2] = "AND"
       }
+      console.log(this.form)
       this.$emit("advancedSearch", this.form)
     },
   },

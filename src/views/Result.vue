@@ -4,7 +4,6 @@
     <!-- {{ results }} -->
     <!-- {{ totalNum }} -->
     <!-- {{ currentQuery }} -->
-
     <el-row id="main">
       <el-col id="side" :span="5">
         <el-row id="orgList">
@@ -29,7 +28,11 @@
           :paper="paper"
         ></result-item>
         </el-col>
-        <el-pagination
+  
+
+      
+    </el-row>
+            <el-pagination id="fanye"
           layout="total,prev, pager, next"
           :total="totalNum"
           :page-size="8"
@@ -38,8 +41,6 @@
           @current-change="currentChange"
         >
         </el-pagination>
-      
-    </el-row>
   </div>
 </template>
 
@@ -53,7 +54,7 @@ export default {
   name: "Result",
   data() {
     return {
-      results: [], //用于展示的数据
+      results: [],
       results_raw: [], //请求到的原始数据
       results_select: [], //经过筛选的数据
       currentQuery: {},
@@ -176,6 +177,8 @@ a {
 }
 #main {
     background-color:rgba(242, 242, 242, 1);
+        display: flex;
+        flex-wrap: wrap
 }
 #side {
   top:10px;
@@ -191,7 +194,7 @@ a {
   text-transform:none;
   background-color:rgba(255, 255, 255, 0);
   text-align:left;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
 
 }
@@ -206,12 +209,13 @@ a {
   font-weight: 500;
 }
 .el-pagination{
-  position: absolute;
-  bottom: 0px;
-  display:block ;
-  text-align: center;
+  text-align:left;
   height: 30px;
   width: 100%;
-
+  padding-left: 0px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 </style>

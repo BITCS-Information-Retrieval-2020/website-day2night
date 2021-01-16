@@ -1,38 +1,44 @@
 <template>
-  <a href="#" @click="toDetail" style="text-decoration: none">
-    <div class="resultItemBox">
-      <!-- {{ paper }} -->
-      <!-- 第一个文章题目 -->
+  <div class="resultItemBox">
+    <!-- {{ paper }} -->
+    <!-- 第一个文章题目 -->
+    <a href="#" @click="toDetail" style="text-decoration: none">
       <el-row class="titleRow">
-        <p>
+        <p class="titile_text">
           <span class="titleSpan">{{ title }}</span>
         </p>
       </el-row>
       <!-- 第一个文章的作者、出版机构、时间 -->
       <el-row class="profileRow">
-        <!--p class="text">
-          <span> 摘要：{{ abstract }} </span>
-        </!--p-->
+        <p class="text1">
+          <span class="zhaiyao"> 摘要：{{ abstract }} </span>
+        </p>
         <p class="text">
           <span class="textSpan"> 作者：{{ authors }} </span>
         </p>
         <p class="text">
-          <span class="textSpan"> 出版组织：{{ org }} </span>
+          <span class="textSpan">
+            出版组织：{{ org }}; <span class="blank15"></span>时间：{{ year }}
+          </span>
         </p>
-        <p class="text">
+        <!--<p class="text">
           <span class="textSpan"> 时间：{{ year }} </span>
-        </p>
+        </p>-->
       </el-row>
-      <!-- 第一个文章的pdf按钮-->
-    <div id="u101" class="ax_default _图片_">
-      <el-button type="primary" >PDF</el-button>
+    </a>
+    <!-- 第一个文章的pdf按钮-->
+    <div id="u101">
+      <el-button type="primary" class="RBtn" @click="toPdf(pdfUrl)"
+        >PDF</el-button
+      >
     </div>
     <!--第一个文章的code按钮-->
-    <div id="u102" class="ax_default _图片_">
-      <el-button type="primary" >Code</el-button>
-    </div> 
+    <div id="u102">
+      <el-button type="primary" class="RBtn" @click="toCode(codeUrl)"
+        >Code</el-button
+      >
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -58,11 +64,23 @@ export default {
     org() {
       return this.paper.publicationOrg
     },
+    pdfUrl() {
+      return this.paper.pdfUrl
+    },
+    codeUrl() {
+      return this.paper.codeUrl
+    },
   },
   methods: {
     toDetail() {
       //   alert(this.paper._id)
       this.$router.push({ name: "Detail", params: { id: this.paper._id } })
+    },
+    toPdf(url) {
+      window.open(url, "_blank")
+    },
+    toCode(url) {
+      window.open(url, "_blank")
     },
   },
 }
@@ -71,77 +89,123 @@ export default {
 <style>
 .resultItemBox {
   margin: 15px 0 5px 0;
-  border-width:5px;
+  border-width: 5px;
   position: relative;
-  display:block;
+  display: block;
   left: 200px;
-  top:20px;
-  width:850px;
-  background-color:rgba(255, 255, 255, 1);
-  border-radius:0px;
+  top: 0px;
+  width: 95%;
+  height: 215px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0px;
   text-align: left;
   padding-left: 10%;
-  -moz-box-shadow:5px 5px 9px rgba(0, 0, 0, 0.349019607843137);
-  -webkit-box-shadow:5px 5px 9px rgba(0, 0, 0, 0.349019607843137);
-  box-shadow:5px 5px 9px rgba(0, 0, 0, 0.349019607843137);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
 }
-.profileRow{
+.resultItemBox:hover {
+  box-shadow: 7px 7px 9px rgba(0, 0, 0, 0.349019607843137);
+}
+.profileRow {
   margin-top: -9px;
+}
+.RBtn {
+  width: 100px;
 }
 span {
   font-family: "PingFangSC-Regular", "PingFang SC", sans-serif;
 }
 
-#titleRow{
-  border-width:0px;
-  position:relative;
+#titleRow {
+  border-width: 0px;
+  position: relative;
   left: 20px;
-  width:547px;
-  height:25px;
-  display:flex;
-
+  width: 300px;
+  height: 25px;
+  display: flex;
 }
-.titleSpan{
-  background-color:rgba(255, 255, 255, 0);
-  color:#4a83e7;
-  font-weight: 600;
-  font-style:normal;
-  font-size:20px;
+.titleSpan {
+  background-color: rgba(255, 255, 255, 0);
+  color: #4a83e7;
+  font-weight: 540;
+  font-style: normal;
+  font-size: 20px;
+  word-break: normal;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  width: 700px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+  overflow: hidden;
 }
-
-.textSpan{
-    background-color:rgba(255, 255, 255, 0);
+.titile_text {
+  max-width: 60em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.titleSpan:hover {
+  text-decoration: underline;
+}
+.textSpan {
+  background-color: rgba(255, 255, 255, 0);
   color: black;
-
 }
 
-.text{
-  border-width:0px;
-  word-wrap:break-word;
-  text-transform:none;
-  background-color:rgba(255, 255, 255, 0);
+.text1 {
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
   color: black;
-  text-align:left;
+  text-align: left;
   font-weight: 400;
-  }
+}
+
+.zhaiyao {
+  width: 700px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 这里是超出几行省略 */
+  overflow: hidden;
+}
+.text {
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  text-align: left;
+  font-weight: 400;
+}
+span.blank15 {
+  padding-left: 15px;
+}
 /*-------------------------101是pdf按钮的样式-------------*/
 #u101 {
-  border-width:0px;
-  position:absolute;
-  left:652px;
-  top:70px;
-  width:150px;
-  height:37px;
-  display:flex;
+  border-width: 0px;
+  position: absolute;
+  left: 80%;
+  top: 40%;
+  width: 100px;
+  height: 37px;
+  display: flex;
 }
 /*-------------------------102是code按钮的样式-------------*/
 
 #u102 {
-  border-width:0px;
-  position:absolute;
-  left:650px;
-  top:120px;
-  width:150px;
-  height:37px;
-  display:flex;
-}</style>
+  border-width: 0px;
+  position: absolute;
+  left: 80%;
+  top: 65%;
+  width: 100px;
+  height: 37px;
+  display: flex;
+}
+</style>

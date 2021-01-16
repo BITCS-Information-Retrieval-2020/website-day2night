@@ -1,11 +1,13 @@
 <template>
   <el-row id="searchBar">
     <el-col id="logoCol" :span="6">
-      <el-col :span="10"><i class="el-icon-search"></i></el-col>
-      <el-col :span="12">
-        <p>Paper</p>
-        <p>Day2night</p>
-      </el-col>
+      <a href="#" @click="toHome">
+        <el-col :span="10"><i class="el-icon-search"></i></el-col>
+        <el-col :span="12">
+          <p>Paper</p>
+          <p>Day2night</p>
+        </el-col></a
+      >
     </el-col>
     <el-col id="inputCol" :span="16">
       <el-row id="inputBox">
@@ -71,6 +73,9 @@ export default {
     }
   },
   methods: {
+    toHome() {
+      this.$router.push({ name: "Home" })
+    },
     search() {
       let query = {
         type: "",
