@@ -141,7 +141,8 @@ export default {
       console.log(item)
     },
     querySearch(queryString, cb) {
-      searchSuggestApi(queryString)
+      let query = { query: queryString }
+      searchSuggestApi(query)
         .then((res) => {
           // console.log(res.data)
           let suggestionsList = res.data.resultData

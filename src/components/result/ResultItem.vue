@@ -73,8 +73,14 @@ export default {
   },
   methods: {
     toDetail() {
-      //   alert(this.paper._id)
-      this.$router.push({ name: "Detail", params: { id: this.paper._id } })
+      // this.$router.push({ name: "Detail", params: { id: this.paper._id } })
+      let newpage = this.$router.resolve({
+        name: "Detail",
+        query: {
+          id: this.paper._id,
+        },
+      })
+      window.open(newpage.href, "_blank")
     },
     toPdf(url) {
       window.open(url, "_blank")
