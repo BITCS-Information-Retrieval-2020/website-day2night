@@ -2,29 +2,33 @@
   <div id="container">
     <search-bar @searchResults="searchResults"></search-bar>
 
-    <introducton></introducton>
-    {{ detail }}
+    <introducton :detail="detail"></introducton>
+    <Pdf></Pdf>
+<!--    {{ detail }}-->
   </div>
 </template>
 
 <script>
 import SearchBar from "common/SearchBar"
-import introducton from "components/detail/introducton";
+import introducton from "components/detail/introducton"
 import { detailApi } from "request"
+import Pdf from "components/detail/Pdfcomponents";
 export default {
   name: "Detail",
   components: {
+    Pdf,
     SearchBar,
     introducton,
+
   },
   data() {
     return {
-      detail: {}
+      detail: {},
     }
   },
   methods: {
     // 获取搜索结果
-    searchResults(results) {
+    searchResults(results){
       console.log(results)
       this.$router.push({ name: "Result", params: { results: results } })
     },
