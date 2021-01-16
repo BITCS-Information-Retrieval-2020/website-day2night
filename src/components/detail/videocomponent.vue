@@ -25,37 +25,6 @@ export default {
   },
   data: function () {
     return {
-      // playerOptions:{
-      //   //播放速度
-      //   playback:[0.5,1.0,1.25,1.5,2.0],
-      //   //是否回放
-      //   autoplay: false,
-      //   //静音
-      //   muted: false,
-      //   //视频结束就重新开始
-      //   loop: false,
-      //   preload: 'auto',
-      //   language:'zh-CN',
-      //   aspectRatio: '16:9',
-      //   fluid: true,
-      //   source: [{
-      //     type: "video/mp4",
-      //     src: "https://vd3.bdstatic.com/mda-kket96s9pugq69t6/sc/mda-kket96s9pugq69t6.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D&v_from_s=hba_haokan_4469&auth_key=1610781238-0-0-a9046559516d4c72013825817a9ab62a&bcevod_channel=searchbox_feed&pd=1&pt=3&abtest=8201_1-8656_1-8811_2"
-      //   }],
-      //   poster:"",
-      //   notSupportedMessage: "此视频暂时无法播放",
-      //   controlbar:{
-      //     timeDivider:true,
-      //     durationDisplay:true,
-      //     remainingTimeDisplay:false,
-      //     fullscreenToggle:true
-      //   }
-      // }
-      // computed:{
-      //   player(){
-      //     return this.$refs.videoPlayer.player
-      //   }
-      // }
       playerOptions: {
         playbackRates: [0.5, 1.0, 1.5, 2.0], // 可选的播放速度
         autoplay: false, // 如果为true,浏览器准备好时开始回放。

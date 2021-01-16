@@ -3,9 +3,9 @@
     <search-bar @searchResults="searchResults"></search-bar>
 
     <introducton :detail="detail"></introducton>
-    <Pdf></Pdf>
+    <Pdf :detail="detail"></Pdf>
     <videocomponent></videocomponent>
-<!--    <video2></video2>-->
+    {{detail}}
     <div></div>
   </div>
 </template>
@@ -19,7 +19,6 @@ import videocomponent from "components/detail/videocomponent"
 export default {
   name: "Detail",
   components: {
-    // video2,
     Pdf,
     SearchBar,
     introducton,
