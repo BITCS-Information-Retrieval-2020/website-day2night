@@ -86,23 +86,23 @@ export default {
         query.query = this.input
         console.log(query)
       } else {
-        let operator = ["", "", "", ""]
+        let operator = ["NOT", "NOT", "NOT", ""]
         let tempQuery = {
           titile: "",
-          author: "",
+          authors: "",
           abstract: "",
           content: "",
         }
         if (this.checkedList.indexOf("标题") > -1) {
-          operator[0] = "AND"
+          operator[0] = "OR"
           tempQuery.titile = this.input
         }
         if (this.checkedList.indexOf("作者") > -1) {
-          operator[1] = "AND"
-          tempQuery.author = this.input
+          operator[1] = "OR"
+          tempQuery.authors = this.input
         }
         if (this.checkedList.indexOf("摘要") > -1) {
-          operator[2] = "AND"
+          operator[2] = "OR"
           tempQuery.abstract = this.input
         }
         tempQuery.operator = operator
