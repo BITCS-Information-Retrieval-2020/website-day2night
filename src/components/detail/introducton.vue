@@ -40,35 +40,57 @@
             {{videourl}}
           </a>
         </p>
-
+<!--        {{detail}}-->
       </el-row>
     </el-col>
     <el-col  :span="4">
       <p style="font-size: 15px;">论文来源</p>
       <div id="source" >{{source}}</div>
     </el-col>
+
   </el-row>
 </template>
 
 <script>
 export default {
   name: "introducton",
-  props:{
-    detail:{},
-  },
+  props:["detail"],
   data() {
     return {
-      title:this.detail.title,
-      year: this.detail.year,
-      author:this.detail.authors,
       abstract:"Effective palliation of malignant biliary obstruction with conventional 10 or 12 French gauge straight polyethylene endoprostheses is limited by stent occlusion, which typically occurs four to five months after insertion. Short term follow up studies of self expanding metal stents (Wallstent, Schneider, UK) in the treatment of patients with malignant biliary obstruction have shown that their use is associated with fewer episodes of stent occlusion compared with plastic stents. There are few data, however, on the longterm patency and durability of metal stents in malignant disease. Between May 1989 and May 1992, metal stents were inserted in 28 patients with malignant bile duct strictures secondary to ampullary tumour (n = 10), pancreatic carcinoma (n = 10), cholangiocarcinoma (n = 7), and porta hepatis nodes from colorectal carcinoma (n = 1). The follow up of these patients until May 1993 is reported with a median follow up of 14.6 months. Twenty two of 28 (78.6%) patients remained free of jaundice or cholangitis. The median period of stent patency was 8.2 months (range 1.0-32.5). Thirteen patients represented with jaundice or cholangitis and endoscopic retrograde",
-      paperurl: this.detail.publicationUrl,
-      codeurl: this.detail.codeUrl,
-      videourl: this.detail.videoUrl,
-      source:this.detail.publicationOrg,
-
-
     }
+  },
+  computed: {
+    title(){
+      return this.detail.title
+    },
+    year() {
+      return this.detail.year
+    },
+    author() {
+      return this.detail.authors
+    },
+    paperurl() {
+      if (this.detail.publicationUrl=="") {
+        return "无"
+      }
+      return this.detail.publicationUrl
+    },
+    codeurl() {
+      if (this.detail.codeUrl=="") {
+        return "无"
+      }
+      return this.detail.codeUrl
+    },
+    videourl() {
+      if (this.detail.videoUrl=="") {
+        return "无"
+      }
+      return this.detail.videoUrl
+    },
+    source() {
+      return this.detail.publicationOrg
+    },
   },
   methods: {
     changeColor() {
@@ -89,7 +111,7 @@ export default {
   background: white;
   padding-left: 20px;
   text-align:left;
-  box-shadow:3px 3px 3px 0px #636363;
+  box-shadow:3px 3px 5px 0px #787878;
 }
 #title{
   color: #4a83e7;
@@ -112,6 +134,7 @@ export default {
   width: 70%;
   text-align:center;
   line-height: 50px;
+  box-shadow:3px 3px 5px 0px #787878;
 }
 .urlform{
   padding-right: 10px;

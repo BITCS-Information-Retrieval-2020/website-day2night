@@ -4,7 +4,6 @@
 
     <introducton :detail="detail"></introducton>
     <Pdf></Pdf>
-<!--    {{ detail }}-->
   </div>
 </template>
 
