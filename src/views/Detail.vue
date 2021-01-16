@@ -4,9 +4,9 @@
     <introducton :detail="detail"></introducton>
     <Pdf :detail="detail"></Pdf>
     <videocomponent :VUrl="detail.videoPath"></videocomponent>
-    <div>
-      {{detail}}
-    </div>
+<!--    <div>-->
+<!--      {{detail}}-->
+<!--    </div>-->
   </div>
 </template>
 

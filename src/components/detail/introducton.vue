@@ -17,7 +17,8 @@
       </el-row>
       <el-row id="url" style="font-size: 15px;" >
         <p :class="{urlform:true}">论文地址:
-          <a id="paperurl"
+          <i v-if="this.paperurl.length<=0" style="padding-left: 10px">无</i>
+          <a  id="paperurl"
              :href="paperurl"
              style="margin-left: 10px"
              target="_blank">
@@ -25,6 +26,7 @@
           </a>
         </p>
         <p :class="{urlform:true}">代码地址:
+          <i v-if="this.codeurl.length<=0" style="padding-left: 10px">无</i>
           <a id="codeurl"
              :href="codeurl"
              style="margin-left: 10px"
@@ -33,6 +35,7 @@
           </a>
         </p>
         <p :class="{urlform:true}">视频地址:
+          <i v-if="this.videourl.length<=0" style="padding-left: 10px">无</i>
           <a id="videourl"
              :href="videourl"
              style="margin-left: 10px"

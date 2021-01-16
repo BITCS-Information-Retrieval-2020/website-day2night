@@ -3,8 +3,10 @@
     <el-row>
       <h2 id="title">视频播放</h2>
     </el-row>
-    <el-row class='demo'>
-
+    <el-row  style="text-align: left; padding-left: 50px">
+      <p v-if="this.VUrl.length<=0" style="margin-top: 1px">无视频</p>
+    </el-row>
+    <el-row class='demo' v-if="this.VUrl.length>0">
       <video-player class="video-player vjs-custom-skin"
                   ref="videoPlayer"
                   :playsinline="true"
@@ -17,11 +19,8 @@
 <!--                  @ready="playerReadied"-->
 <!--    >-->
       </video-player>
-
-
-
     </el-row>
-    <el-row id="downBtn">
+    <el-row id="downBtn" v-if="this.VUrl.length>0">
       <el-button  type="text"  @click="download"><span class="el-icon-download" style="font-size:20px;"></span></el-button>
     </el-row>
   </el-row>

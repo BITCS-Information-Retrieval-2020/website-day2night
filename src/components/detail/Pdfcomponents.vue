@@ -3,14 +3,17 @@
     <el-row>
       <h2 id="title">论文预览</h2>
     </el-row>
-    <el-row >
+    <el-row v-if="this.pdfUrl.length==0" style="text-align: left; padding-left: 50px">
+      <p style="margin-top: 1px">无论文</p>
+    </el-row>
+    <el-row v-if="this.pdfUrl.length>0">
       <div>
         <el-button type="text" style="padding-right: 10px;" @click="changePdfPage(0)">上一页</el-button>
         第{{page}}页/共{{pagenum}}页
         <el-button type="text" @click="changePdfPage(1)">下一页</el-button>
       </div>
     </el-row>
-    <el-row>
+    <el-row v-if="this.pdfUrl.length>0">
       <div id="display" class="pdf">
         <pdf
           ref="pdf"
@@ -21,7 +24,7 @@
         </pdf>
       </div>
     </el-row>
-    <el-row id="downBtn">
+    <el-row id="downBtn" v-if="this.pdfUrl.length>0">
       <el-button  type="text"  @click="download"><span class="el-icon-download" style="font-size:20px;"></span></el-button>
     </el-row>
   </el-row>
