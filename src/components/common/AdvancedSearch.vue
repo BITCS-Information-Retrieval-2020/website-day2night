@@ -4,7 +4,7 @@
       <el-input v-model="form.title"></el-input>
     </el-form-item>
     <el-form-item label="作者">
-      <el-input v-model="form.author"></el-input>
+      <el-input v-model="form.authors"></el-input>
     </el-form-item>
     <el-form-item label="摘要">
       <el-input v-model="form.abstract"></el-input>
@@ -22,7 +22,7 @@ export default {
     return {
       form: {
         title: "",
-        author: "",
+        authors: "",
         abstract: "",
         content: "",
         operator: ["", "", "", ""],
@@ -35,7 +35,7 @@ export default {
       if (this.form.title != "") {
         this.form.operator[0] = "AND"
       }
-      if (this.form.author != "") {
+      if (this.form.authors != "") {
         this.form.operator[1] = "AND"
       }
       if (this.form.abstract != "") {
