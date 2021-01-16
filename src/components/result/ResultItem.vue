@@ -1,28 +1,29 @@
 <template>
-  <a href="#" @click="toDetail" style="text-decoration: none">
     <div class="resultItemBox">
       <!-- {{ paper }} -->
       <!-- 第一个文章题目 -->
+      <a href="#" @click="toDetail" style="text-decoration: none">
       <el-row class="titleRow">
-        <p>
+        <p class="titile_text">  
           <span class="titleSpan">{{ title }}</span>
         </p>
       </el-row>
       <!-- 第一个文章的作者、出版机构、时间 -->
       <el-row class="profileRow">
-        <!--p class="text">
-          <span> 摘要：{{ abstract }} </span>
-        </!--p-->
+        <p class="text1">
+          <span class="zhaiyao"> 摘要：{{ abstract }} </span>
+        </p>
         <p class="text">
           <span class="textSpan"> 作者：{{ authors }} </span>
         </p>
         <p class="text">
-          <span class="textSpan"> 出版组织：{{ org }} </span>
+          <span class="textSpan"> 出版组织：{{ org }}; <span class="blank15"></span>时间：{{ year }} </span>
         </p>
-        <p class="text">
+        <!--<p class="text">
           <span class="textSpan"> 时间：{{ year }} </span>
-        </p>
+        </p>-->
       </el-row>
+      </a>
       <!-- 第一个文章的pdf按钮-->
     <div id="u101" class="ax_default _图片_">
       <el-button type="primary" >PDF</el-button>
@@ -32,7 +33,6 @@
       <el-button type="primary" >Code</el-button>
     </div> 
     </div>
-  </a>
 </template>
 
 <script>
@@ -75,7 +75,7 @@ export default {
   position: relative;
   display:block;
   left: 200px;
-  top:20px;
+  top:0px;
   width:850px;
   background-color:rgba(255, 255, 255, 1);
   border-radius:0px;
@@ -96,25 +96,65 @@ span {
   border-width:0px;
   position:relative;
   left: 20px;
-  width:547px;
+  width:300px;
   height:25px;
   display:flex;
-
 }
 .titleSpan{
   background-color:rgba(255, 255, 255, 0);
   color:#4a83e7;
-  font-weight: 600;
+  font-weight: 540;
   font-style:normal;
   font-size:20px;
+  word-break:normal; 
+  display:block; 
+  white-space:pre-wrap;
+  word-wrap : break-word;
+  overflow: hidden;
+  width: 700px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+  overflow: hidden;
+  
 }
-
+.titile_text{
+  max-width: 60em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.titleSpan:hover{
+  text-decoration:underline;
+}
 .textSpan{
     background-color:rgba(255, 255, 255, 0);
   color: black;
 
 }
 
+.text1{
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+  background-color:rgba(255, 255, 255, 0);
+  color: black;
+  text-align:left;
+  font-weight: 400;
+}
+
+.zhaiyao{
+  width: 700px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 这里是超出几行省略 */
+  overflow: hidden;
+
+}
 .text{
   border-width:0px;
   word-wrap:break-word;
@@ -124,13 +164,16 @@ span {
   text-align:left;
   font-weight: 400;
   }
+span.blank15{
+  padding-left: 15px;
+}
 /*-------------------------101是pdf按钮的样式-------------*/
 #u101 {
   border-width:0px;
   position:absolute;
-  left:652px;
-  top:70px;
-  width:150px;
+  left: 85.3%;
+  top: 40%;
+  width:100px;
   height:37px;
   display:flex;
 }
@@ -139,9 +182,9 @@ span {
 #u102 {
   border-width:0px;
   position:absolute;
-  left:650px;
-  top:120px;
-  width:150px;
+  left:85%;
+  top:65%;
+  width:100px;
   height:37px;
   display:flex;
 }</style>
