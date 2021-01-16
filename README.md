@@ -1,10 +1,10 @@
 # 接口文档
 ### 1. 检索结果页
-描述：从前端接收的数据形式，即前端的请求格式
+描述：返回检索结果
 #### URL   
  /results
 #### HTTP请求方式
-**GET**  /results?type=0&query=game&page=1
+**GET**  /results?type=0&query=game
 
 #### HTTP返回格式
 JSON
@@ -15,8 +15,6 @@ JSON
 | type       | string      | 是      | 检索类型 0表示全部字段检索，1表示高级检索，2表示视频定位|
 | query   | string    | 是(二选一) | type0、type2 的检索字段|
 | query   | dict     | 是(二选一) | type1的检索字段|
-| page       | string      | 是      |分页后当前页面序号|
-
 
 ##### 示例
 
@@ -28,16 +26,16 @@ JSON
     // type 1 表示高级检索，不需要的字段设为空字符串，operator表示从
     //第二个字段开始每个字段的运算符，空字段对应的操作符也为空字符串
     {
-        "type": 1,
-        "query":{
-            "title": "GNN",
-            "author": "Hinton",
-            "abstract": "",
-            "content": "this paper proposed ...",
+	"type": 1,
+	"query":{
+	    "title": "GNN",
+	    "author": "Hinton",
+	    "abstract": "",
+	    "content": "this paper proposed ...",
 	    "operator": ["OR", "AND", "", "NOT"]
-        }
-        
-    }
+	}
+
+     }
     // type 2 表示视频定位
     {
         "type": 2,
@@ -45,15 +43,15 @@ JSON
     }
 
 #### 返回结果说明
-返回 [pagesnum,{},{},{},……]
+返回 {"totalnum": totalnum, "resultData": [{},{},{},……]}
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
-| pagesnum    | int    |分页总页数 |
+| totalnum    | int    |返回结果总数 |
 
-每一个{}中
+resultData每一个{}中
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
-| id         | string    |文章唯一id |
+| _id         | int    |文章唯一id |
 | title       | string    |文章标题|
 | authos       | string    |摘要|
 |publicationOrg |string |发表刊物|
@@ -71,60 +69,60 @@ JSON
 ##### 示例
 
 
-     [   30,
-      {
-            "_id": 1, //按照相关度进行排序 数字越小越相关
-            "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
-            "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
-            "abstract": "Recent research finds CNN models...",
-            "publicationOrg": "NeurIPS",
-            "year": 2020,
-            "pdfUrl": "...",
-            "pdfPath": ".../searcher/data/PDFs/xx.pdf",// 绝对路径
-            "publicationUrl": "https://papers.nips.cc/paper/2020/hash/3ad7c2ebb96fcba7cda0cf54a2e802f5-Abstract.html",
-            "codeUrl": "https://github.com/zjysteven/DVERGE",
-            "datasetUrl": "https://drive.google.com/drive/folders/1i96Bk_bCWXhb7afSNp1t3woNjO1kAMDH?usp=sharing",
-            "videoUrl": "",
-            "videoPath": ".../searcher/data/videos/xx.*",// 绝对路径
-            "pdfText": "Alternatively, ensemble methods are proposed to induce sub-models...",
-            "videoStruct": [
-                {
-                    "timeStart": "hh-mm-ss",
-                    "timeEnd": "hh-mm-ss",
-                    "sentence": "Only small clean accuracy drop is observed in the process."
-                }
-            ]
-        },
-       {
-            "_id": 2, //按照相关度进行排序 数字越小越相关
-            "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
-            "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
-            "abstract": "Recent research finds CNN models...",
-            "publicationOrg": "NeurIPS",
-            "year": 2020,
-            "pdfUrl": "...",
-            "pdfPath": ".../searcher/data/PDFs/xx.pdf",// 绝对路径
-            "publicationUrl": "https://papers.nips.cc/paper/2020/hash/3ad7c2ebb96fcba7cda0cf54a2e802f5-Abstract.html",
-            "codeUrl": "https://github.com/zjysteven/DVERGE",
-            "datasetUrl": "https://drive.google.com/drive/folders/1i96Bk_bCWXhb7afSNp1t3woNjO1kAMDH?usp=sharing",
-            "videoUrl": "",
-            "videoPath": ".../searcher/data/videos/xx.*",// 绝对路径
-            "pdfText": "Alternatively, ensemble methods are proposed to induce sub-models...",
-            "videoStruct": [
-                {
-                    "timeStart": "hh-mm-ss",
-                    "timeEnd": "hh-mm-ss",
-                    "sentence": "Only small clean accuracy drop is observed in the process."
-                }
-            ]
-        }
-    ]
+	{     
+	      "totalnum":200,
+	      "resultData":
+	      [
+	          {
+		    "_id": 1, //按照相关度进行排序 数字越小越相关
+		    "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
+		    "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
+		    "abstract": "Recent research finds CNN models...",
+		    "publicationOrg": "NeurIPS",
+		    "year": 2020,
+		    "pdfUrl": "...",
+		    "pdfPath": ".../searcher/data/PDFs/xx.pdf",// 绝对路径
+		    "publicationUrl": "https://papers.nips.cc/paper/2020/hash/3ad7c2ebb96fcba7cda0cf54a2e802f5-Abstract.html",
+		    "codeUrl": "https://github.com/zjysteven/DVERGE",
+		    "datasetUrl": "https://drive.google.com/drive/folders/1i96Bk_bCWXhb7afSNp1t3woNjO1kAMDH?usp=sharing",
+		    "videoUrl": "",
+		    "videoPath": ".../searcher/data/videos/xx.*",// 绝对路径
+		    "pdfText": "Alternatively, ensemble methods are proposed to induce sub-models...",
+		    "videoStruct": [
+			{
+			    "timeStart": "hh-mm-ss",
+			    "timeEnd": "hh-mm-ss",
+			    "sentence": "Only small clean accuracy drop is observed in the process."
+			}
+		    ]
+		  },
+		  {
+		    "_id": 2, //按照相关度进行排序 数字越小越相关
+		    "title": "[Oral at NeurIPS 2020] DVERGE: Diversifying Vulnerabilities for Enhanced Robust Generation of Ensembles",
+		    "authors": "Huanrui Yang, Jingyang Zhang, Hongliang Dong, Nathan Inkawhich, Andrew Gardner, Andrew Touchet, Wesley Wilkes, Heath Berry, Hai Li",
+		    "abstract": "Recent research finds CNN models...",
+		    "publicationOrg": "NeurIPS",
+		    "year": 2020,
+		    "pdfUrl": "...",
+		    "pdfPath": ".../searcher/data/PDFs/xx.pdf",// 绝对路径
+		    "publicationUrl": "https://papers.nips.cc/paper/2020/hash/3ad7c2ebb96fcba7cda0cf54a2e802f5-Abstract.html",
+		    "codeUrl": "https://github.com/zjysteven/DVERGE",
+		    "datasetUrl": "https://drive.google.com/drive/folders/1i96Bk_bCWXhb7afSNp1t3woNjO1kAMDH?usp=sharing",
+		    "videoUrl": "",
+		    "videoPath": ".../searcher/data/videos/xx.*",// 绝对路径
+		    "pdfText": "Alternatively, ensemble methods are proposed to induce sub-models...",
+		    "videoStruct": [
+			{
+			    "timeStart": "hh-mm-ss",
+			    "timeEnd": "hh-mm-ss",
+			    "sentence": "Only small clean accuracy drop is observed in the process."
+			}
+		    ]
+		  }
+	      ]
+	}
 
 
-
-```python
-
-```
 
 
 ### 2. 热门文章请求
@@ -185,7 +183,7 @@ JSON
 
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
-| id         | string    |文章唯一id |
+| _id         | int    |文章唯一id |
 | title       | string    |文章标题|
 | authos       | string    |摘要|
 |publicationOrg |string |发表刊物|
