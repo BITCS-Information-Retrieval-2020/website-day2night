@@ -6,7 +6,10 @@
         <p id="year">出版时间：{{year}}年</p>
       </el-row>
       <el-row >
-        <p>作者：{{author}}</p>
+        <p>
+          作者： {{author}}
+        </p>
+
       </el-row>
       <el-row style="margin-bottom: 50px">
         <p style="margin-bottom: 0px">摘要：</p>
@@ -40,7 +43,7 @@
 
       </el-row>
     </el-col>
-    <el-col  :span="3">
+    <el-col  :span="4">
       <p style="font-size: 15px;">论文来源</p>
       <div id="source" >{{source}}</div>
     </el-col>
@@ -50,16 +53,21 @@
 <script>
 export default {
   name: "introducton",
+  props:{
+    detail:{},
+  },
   data() {
     return {
-      title: 'A three year follow up of self expanding metal stents in the endoscopic palliation of longterm survivors with malignant biliary obstruction.',
-      year: 2020,
-      author:'K, Mergener，J, Baillie',
+      title:this.detail.title,
+      year: this.detail.year,
+      author:this.detail.authors,
       abstract:"Effective palliation of malignant biliary obstruction with conventional 10 or 12 French gauge straight polyethylene endoprostheses is limited by stent occlusion, which typically occurs four to five months after insertion. Short term follow up studies of self expanding metal stents (Wallstent, Schneider, UK) in the treatment of patients with malignant biliary obstruction have shown that their use is associated with fewer episodes of stent occlusion compared with plastic stents. There are few data, however, on the longterm patency and durability of metal stents in malignant disease. Between May 1989 and May 1992, metal stents were inserted in 28 patients with malignant bile duct strictures secondary to ampullary tumour (n = 10), pancreatic carcinoma (n = 10), cholangiocarcinoma (n = 7), and porta hepatis nodes from colorectal carcinoma (n = 1). The follow up of these patients until May 1993 is reported with a median follow up of 14.6 months. Twenty two of 28 (78.6%) patients remained free of jaundice or cholangitis. The median period of stent patency was 8.2 months (range 1.0-32.5). Thirteen patients represented with jaundice or cholangitis and endoscopic retrograde",
-      paperurl: 'https://arxiv.org/abs/1805.08318v2',
-      codeurl: 'https://paperswithcode.com/paper/self-attention-generative-adversarial#code',
-      videourl: 'https://www.youtube.com/watch?v=v4y9zBrR4gY',
-      source:'CVPR',
+      paperurl: this.detail.publicationUrl,
+      codeurl: this.detail.codeUrl,
+      videourl: this.detail.videoUrl,
+      source:this.detail.publicationOrg,
+
+
     }
   },
   methods: {
