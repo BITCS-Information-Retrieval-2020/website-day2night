@@ -5,6 +5,7 @@
     <introducton :detail="detail"></introducton>
     <Pdf></Pdf>
     <videocomponent></videocomponent>
+<!--    <video2></video2>-->
     <div></div>
   </div>
 </template>
@@ -15,9 +16,11 @@ import introducton from "components/detail/introducton"
 import { detailApi } from "request"
 import Pdf from "components/detail/Pdfcomponents";
 import videocomponent from "components/detail/videocomponent";
+// import video2 from "components/detail/video2";
 export default {
   name: "Detail",
   components: {
+    // video2,
     Pdf,
     SearchBar,
     introducton,
