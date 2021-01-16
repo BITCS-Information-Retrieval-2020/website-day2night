@@ -18,7 +18,7 @@
         </p>
         <p class="text">
           <span class="textSpan">
-            出版组织：{{ org }}; <span class="blank15"></span>时间：{{ year }}
+            时间：{{ year }}<span class="blank15"></span>出版组织：{{ org }}
           </span>
         </p>
         <!--<p class="text">
@@ -73,8 +73,14 @@ export default {
   },
   methods: {
     toDetail() {
-      //   alert(this.paper._id)
-      this.$router.push({ name: "Detail", params: { id: this.paper._id } })
+      // this.$router.push({ name: "Detail", params: { id: this.paper._id } })
+      let newpage = this.$router.resolve({
+        name: "Detail",
+        query: {
+          id: this.paper._id,
+        },
+      })
+      window.open(newpage.href, "_blank")
     },
     toPdf(url) {
       window.open(url, "_blank")
@@ -92,24 +98,20 @@ export default {
   border-width: 5px;
   position: relative;
   display: block;
-  left: 200px;
+  left: 20%;
   top: 0px;
-  width: 95%;
-  height: 215px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0px;
   text-align: left;
   padding-left: 10%;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+  height: 215px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .resultItemBox:hover {
-  box-shadow: 7px 7px 9px rgba(0, 0, 0, 0.349019607843137);
+  box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.349019607843137);
 }
 .profileRow {
   margin-top: -9px;
-}
-.RBtn {
-  width: 100px;
 }
 span {
   font-family: "PingFangSC-Regular", "PingFang SC", sans-serif;
@@ -126,7 +128,7 @@ span {
 .titleSpan {
   background-color: rgba(255, 255, 255, 0);
   color: #4a83e7;
-  font-weight: 540;
+  font-weight: 500;
   font-style: normal;
   font-size: 20px;
   word-break: normal;
@@ -134,7 +136,7 @@ span {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow: hidden;
-  width: 700px;
+  width: 90%;
   word-break: break-all;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -143,7 +145,7 @@ span {
   overflow: hidden;
 }
 .titile_text {
-  max-width: 60em;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -154,6 +156,13 @@ span {
 .textSpan {
   background-color: rgba(255, 255, 255, 0);
   color: black;
+  width: 80%;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* 这里是超出几行省略 */
+  overflow: hidden;
 }
 
 .text1 {
@@ -167,7 +176,7 @@ span {
 }
 
 .zhaiyao {
-  width: 700px;
+  width: 80%;
   word-break: break-all;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -184,6 +193,10 @@ span {
   text-align: left;
   font-weight: 400;
 }
+.RBtn {
+  width: 100px;
+}
+
 span.blank15 {
   padding-left: 15px;
 }

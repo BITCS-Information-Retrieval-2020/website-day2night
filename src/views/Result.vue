@@ -8,17 +8,21 @@
       <el-col id="side" :span="5">
         <el-row id="orgList">
           <p><span class="titlet">来源</span></p>
-          <p v-for="(org, index) in orgList" :key="index">
+          <div class="listItemBox" v-for="(org, index) in orgList" :key="index">
             <a class="listItem" href="#" @click="slectByOrg(org)">{{ org }}</a>
-          </p>
+          </div>
         </el-row>
         <el-row id="yearList">
           <p><span class="titlet">年度</span></p>
-          <p v-for="(year, index) in yearList" :key="index">
+          <div
+            class="listItemBox"
+            v-for="(year, index) in yearList"
+            :key="index"
+          >
             <a class="listItem" href="#" @click="selectByYear(year)">{{
               year
             }}</a>
-          </p>
+          </div>
         </el-row>
       </el-col>
       <el-col id="resultList" :span="19">
@@ -27,20 +31,18 @@
           :key="index"
           :paper="paper"
         ></result-item>
-        </el-col>
-  
-
-      
+      </el-col>
     </el-row>
-            <el-pagination id="fanye"
-          layout="total,prev, pager, next"
-          :total="totalNum"
-          :page-size="8"
-          @prev-click="prevClick"
-          @next-click="nextClick"
-          @current-change="currentChange"
-        >
-        </el-pagination>
+    <el-pagination
+      id="fanye"
+      layout="total,prev, pager, next"
+      :total="totalNum"
+      :page-size="8"
+      @prev-click="prevClick"
+      @next-click="nextClick"
+      @current-change="currentChange"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -61,8 +63,8 @@ export default {
       totalNum: 0,
       currentPage: 1,
 
-      orgList: ["aaaa", "bbbbb", "ccccc", "ddddd", "eeeeee"],
-      yearList: ["2020", "2019", "2018", "2017"],
+      orgList: [],
+      yearList: [],
     }
   },
   methods: {
@@ -176,40 +178,45 @@ a {
   text-decoration: none;
 }
 #main {
-    background-color:rgba(242, 242, 242, 1);
-        display: flex;
-        flex-wrap: wrap
+  background-color: rgba(242, 242, 242, 1);
+  padding-bottom: 10px;
+  display: block;
+  flex-wrap: wrap;
+  height: 1855px;
 }
 #side {
-  top:10px;
-  position:absolute;
-  left:50px;
-  text-align:left;
-
+  top: 10px;
+  position: absolute;
+  left: 50px;
+  text-align: left;
 }
 
 .titlet {
-  border-width:0px;
-  word-wrap:break-word;
-  text-transform:none;
-  background-color:rgba(255, 255, 255, 0);
-  text-align:left;
-  font-weight: 500;
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  font-weight: 600;
   font-size: 18px;
-
 }
-
+.listItemBox {
+  height: 30px;
+}
 .listItem {
-  border-width:0px;
-  word-wrap:break-word;
-  text-transform:none;
-  background-color:rgba(255, 255, 255, 0);
-  color: black;
-  text-align:left;
-  font-weight: 500;
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(68, 106, 228);
+  text-align: left;
+  font-weight: 600;
 }
-.el-pagination{
-  text-align:left;
+.listItem:hover {
+  font-weight: 800;
+}
+.el-pagination {
+  text-align: left;
   height: 30px;
   width: 100%;
   padding-left: 0px;

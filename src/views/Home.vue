@@ -1,12 +1,7 @@
 <template>
   <el-container>
     <h-search-bar @searchResults="searchResults"></h-search-bar>
-    <ol>
-      <!-- <li v-for="(item, index) in hotList" :key="index">
-        {{ item.title }}
-        <img :src="item.image">
-      </li> -->
-    </ol>
+    <!-- {{ hotList }} -->
     <el-container>
       <el-main>
         <el-row>
@@ -26,7 +21,7 @@
           >
             <el-card :body-style="{ padding: '0px' }" shadow="hover">
               <div class="videoDiv">
-                <div class="coverDiv" @click="todo(item._id)">
+                <div class="coverDiv" @click="toDetail(item.id)">
                   <el-row>
                     <el-col :span="24">
                       <img :src="item.image" class="rightulliimg" />
@@ -83,10 +78,15 @@ export default {
       // result需要为列表类型
       this.$router.push({ name: "Result", params: { results: results } })
     },
-    todo(id) {
-      console.log("id")
-      console.log(id)
-      this.$router.push({ name: "Detail", params: { id: id } })
+    toDetail(id) {
+      // this.$router.push({ name: "Detail", params: { id: id } })
+      let newpage = this.$router.resolve({
+        name: "Detail",
+        query: {
+          id: id,
+        },
+      })
+      window.open(newpage.href, "_blank")
     },
     toAbout() {
       this.$router.push({ name: "About" })
