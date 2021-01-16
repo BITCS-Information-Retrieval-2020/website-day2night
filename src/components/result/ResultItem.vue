@@ -8,7 +8,6 @@
           <span class="titleSpan">{{ title }}</span>
         </p>
       </el-row>
-
       <!-- 第一个文章的作者、出版机构、时间 -->
       <el-row class="profileRow">
         <p class="text1">
@@ -93,24 +92,19 @@ export default {
   border-width: 5px;
   position: relative;
   display: block;
-  left: 200px;
+  left: 20%;
   top: 0px;
-  width: 95%;
-  height: 215px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0px;
   text-align: left;
   padding-left: 10%;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .resultItemBox:hover {
-  box-shadow: 7px 7px 9px rgba(0, 0, 0, 0.349019607843137);
+  box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.349019607843137);
 }
 .profileRow {
   margin-top: -9px;
-}
-.RBtn {
-  width: 100px;
 }
 span {
   font-family: "PingFangSC-Regular", "PingFang SC", sans-serif;
@@ -135,7 +129,7 @@ span {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow: hidden;
-  width: 700px;
+  width: 90%;
   word-break: break-all;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -144,7 +138,7 @@ span {
   overflow: hidden;
 }
 .titile_text {
-  max-width: 60em;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -155,6 +149,13 @@ span {
 .textSpan {
   background-color: rgba(255, 255, 255, 0);
   color: black;
+  width: 80%;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* 这里是超出几行省略 */
+  overflow: hidden;
 }
 
 .text1 {
@@ -168,7 +169,7 @@ span {
 }
 
 .zhaiyao {
-  width: 700px;
+  width: 80%;
   word-break: break-all;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -185,6 +186,10 @@ span {
   text-align: left;
   font-weight: 400;
 }
+.RBtn {
+  width: 100px;
+}
+
 span.blank15 {
   padding-left: 15px;
 }

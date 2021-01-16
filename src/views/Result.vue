@@ -27,20 +27,18 @@
           :key="index"
           :paper="paper"
         ></result-item>
-        </el-col>
-  
-
-      
+      </el-col>
     </el-row>
-            <el-pagination id="fanye"
-          layout="total,prev, pager, next"
-          :total="totalNum"
-          :page-size="8"
-          @prev-click="prevClick"
-          @next-click="nextClick"
-          @current-change="currentChange"
-        >
-        </el-pagination>
+    <el-pagination
+      id="fanye"
+      layout="total,prev, pager, next"
+      :total="totalNum"
+      :page-size="8"
+      @prev-click="prevClick"
+      @next-click="nextClick"
+      @current-change="currentChange"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -61,8 +59,8 @@ export default {
       totalNum: 0,
       currentPage: 1,
 
-      orgList: ["aaaa", "bbbbb", "ccccc", "ddddd", "eeeeee"],
-      yearList: ["2020", "2019", "2018", "2017"],
+      orgList: [],
+      yearList: [],
     }
   },
   methods: {
@@ -176,40 +174,42 @@ a {
   text-decoration: none;
 }
 #main {
-    background-color:rgba(242, 242, 242, 1);
-    display: block;
-    flex-wrap: wrap
+  background-color: rgba(242, 242, 242, 1);
+  padding-bottom: 10px;
+  display: block;
+  flex-wrap: wrap;
 }
 #side {
-  top:10px;
-  position:absolute;
-  left:50px;
-  text-align:left;
-
+  top: 10px;
+  position: absolute;
+  left: 50px;
+  text-align: left;
 }
 
 .titlet {
-  border-width:0px;
-  word-wrap:break-word;
-  text-transform:none;
-  background-color:rgba(255, 255, 255, 0);
-  text-align:left;
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: left;
   font-weight: 600;
   font-size: 18px;
-
 }
 
 .listItem {
-  border-width:0px;
-  word-wrap:break-word;
-  text-transform:none;
-  background-color:rgba(255, 255, 255, 0);
-  color: black;
-  text-align:left;
-  font-weight: 500;
+  border-width: 0px;
+  word-wrap: break-word;
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(68, 106, 228);
+  text-align: left;
+  font-weight: 600;
 }
-.el-pagination{
-  text-align:left;
+.listItem:hover {
+  font-weight: 800;
+}
+.el-pagination {
+  text-align: left;
   height: 30px;
   width: 100%;
   padding-left: 0px;
