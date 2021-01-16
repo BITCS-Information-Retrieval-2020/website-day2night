@@ -6,12 +6,12 @@
     <!-- {{ currentQuery }} -->
     <el-row id="main">
       <el-col id="side" :span="5">
-        <el-row id="orgList">
-          <p><span class="titlet">来源</span></p>
-          <div class="listItemBox" v-for="(org, index) in orgList" :key="index">
-            <a class="listItem" href="#" @click="slectByOrg(org)">{{ org }}</a>
-          </div>
-        </el-row>
+<!--        <el-row id="orgList">-->
+<!--          <p><span class="titlet">来源</span></p>-->
+<!--          <div class="listItemBox" v-for="(org, index) in orgList" :key="index">-->
+<!--            <a class="listItem" href="#" @click="slectByOrg(org)">{{ org }}</a>-->
+<!--          </div>-->
+<!--        </el-row>-->
         <el-row id="yearList">
           <p><span class="titlet">年度</span></p>
           <div
@@ -182,7 +182,7 @@ a {
   padding-bottom: 10px;
   display: block;
   flex-wrap: wrap;
-  height: 1855px;
+  height: 2055px;
 }
 #side {
   top: 10px;

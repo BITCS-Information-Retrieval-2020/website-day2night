@@ -1,5 +1,5 @@
 <template>
-  <el-row id="pdfbox" >
+  <el-row id="pdfbox">
     <el-row>
       <h2 id="title">论文预览</h2>
     </el-row>
@@ -21,6 +21,9 @@
         </pdf>
       </div>
     </el-row>
+    <el-row id="downBtn">
+      <el-button  type="text"  @click="download"><span class="el-icon-download" style="font-size:20px;"></span></el-button>
+    </el-row>
   </el-row>
 </template>
 
@@ -39,6 +42,9 @@ export default {
     }
   },
   methods: {
+    download(){
+      window.location.href = this.detail.pdfPath
+    },
     changePdfPage(val) {
       if (val === 0 && this.page > 1) {
         this.page--;
@@ -78,7 +84,10 @@ export default {
   padding-left: 5%;
   padding-right: 5%;
   margin-top: 3px;
-  margin-bottom: 3%;
-
+  margin-bottom: 3%
+}
+#downBtn {
+  height: 50px;
+  width: 50px;
 }
 </style>

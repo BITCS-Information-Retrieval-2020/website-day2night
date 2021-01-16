@@ -1,6 +1,11 @@
 <template>
-  <div class='demo'>
-    <video-player class="video-player vjs-custom-skin"
+  <el-row id="videobox" >
+    <el-row>
+      <h2 id="title">视频播放</h2>
+    </el-row>
+    <el-row class='demo'>
+
+      <video-player class="video-player vjs-custom-skin"
                   ref="videoPlayer"
                   :playsinline="true"
                   :options="playerOptions">
@@ -11,8 +16,15 @@
 <!--                  @statechanged="playerStateChanged($event)"-->
 <!--                  @ready="playerReadied"-->
 <!--    >-->
-    </video-player>
-  </div>
+      </video-player>
+
+
+
+    </el-row>
+    <el-row id="downBtn">
+      <el-button  type="text"  @click="download"><span class="el-icon-download" style="font-size:20px;"></span></el-button>
+    </el-row>
+  </el-row>
 </template>
 
 <script>
@@ -20,6 +32,7 @@ import { videoPlayer } from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 export default {
   name: "videocomponent",
+  props: ["VUrl"],
   components: {
     videoPlayer
   },
@@ -36,12 +49,11 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: "video/mp4", // 类型
-          // src: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4'
-          src: "https://www.w3school.com.cn/i/movie.mp4" //
-          // src: "https://vd3.bdstatic.com/mda-kihjftu42bffmi40/hd/mda-kihjftu42bffmi40.mp4?playlist=%5B%22hd%22%5D&v_from_s=hba_videoui_4135&auth_key=1610794414-0-0-f7285f5429b0086f7dbc52cfbc92b63b&bcevod_channel=searchbox_feed&pd=1&pt=3&abtest=8201_1-8656_1-8811_2" // url地址
+          // src: "https://www.w3school.com.cn /i/movie.mp4" //this.
+          src: this.VUrl,
         }],
         poster: './public/bg.png', // 封面地址
-        notSupportedMessage: '此视频暂无法播放lalala', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
+        notSupportedMessage: '此视频暂无法播放', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
           timeDivider: true, // 当前时间和持续时间的分隔符
           durationDisplay: true, // 显示持续时间
@@ -51,37 +63,41 @@ export default {
       }
     }
   },
-  // methods: {
-  //   // 播放回调
-  //   onPlayerPlay(player) {
-  //     console.log('player play!', player)
-  //   },
-  //   // 暂停回调
-  //   onPlayerPause(player) {
-  //     console.log('player pause!', player)
-  //   },
-  //   //媒体的readyState为HAVE_FUTURE_DATA或更高
-  //   onPlayerCanplay(player) {
-  //     console.log('player Canplay!', player)
-  //   },
-  //   //媒体的readyState为HAVE_ENOUGH_DATA或更高。这意味着可以在不缓冲的情况下播放整个媒体文件。
-  //   onPlayerCanplaythrough(player) {
-  //     console.log('player Canplaythrough!', player)
-  //   },
-  //   //播放状态改变回调
-  //   playerStateChanged(playerCurrentState) {
-  //     console.log('player current update state', playerCurrentState)
-  //   },
-  //   //将侦听器绑定到组件的就绪状态。与事件监听器的不同之处在于，如果ready事件已经发生，它将立即触发该函数。。
-  //   playerReadied(player) {
-  //     console.log('example player 1 readied', player);
-  //   }
-  // },
+  methods: {
+    download(){
+      window.location.href = this.VUrl
+    }
+  },
+  mounted() {
+    this.playerOptions.sources[0].src = this.VUrl,
+    console.log(this.playerOptions.sources[0].src)
+  }
+  // computed:{
+  //   playerOptions.sources[0]=""
+  // }
 }
 </script>
 
 <style scoped>
+#downBtn {
+  height: 50px;
+  width: 50px;
+}
+#videobox{
+  margin-left: 7%;
+  width: 75%;
+  margin-bottom: 30px;
+  box-shadow:3px 3px 5px 0px #787878;
+  background-color: #ffffff
+
+}
+#title{
+  padding-left: 20px;
+  text-align: left;
+  color: #4a83e7;
+}
 .demo{
+  margin-bottom: 3%;
   display: inline-block;
   width: 600px;
   height: 338px;

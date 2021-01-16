@@ -104,7 +104,7 @@ export default {
   border-radius: 0px;
   text-align: left;
   padding-left: 10%;
-  height: 215px;
+  height: 260px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .resultItemBox:hover {
@@ -204,7 +204,7 @@ span.blank15 {
 #u101 {
   border-width: 0px;
   position: absolute;
-  left: 80%;
+  left: 85%;
   top: 40%;
   width: 100px;
   height: 37px;
@@ -215,7 +215,7 @@ span.blank15 {
 #u102 {
   border-width: 0px;
   position: absolute;
-  left: 80%;
+  left: 85%;
   top: 65%;
   width: 100px;
   height: 37px;

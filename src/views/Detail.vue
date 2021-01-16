@@ -1,12 +1,12 @@
 <template>
   <div id="container">
     <search-bar @searchResults="searchResults"></search-bar>
-
     <introducton :detail="detail"></introducton>
     <Pdf :detail="detail"></Pdf>
-    <videocomponent></videocomponent>
-    {{detail}}
-    <div></div>
+    <videocomponent :VUrl="detail.videoPath"></videocomponent>
+    <div>
+      {{detail}}
+    </div>
   </div>
 </template>
 
