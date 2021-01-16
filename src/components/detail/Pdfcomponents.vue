@@ -61,15 +61,15 @@
 <!--</style>-->
 
 <template>
-  <el-row style="margin-left: 10%;width: 70%;margin-bottom: 30px">
+  <el-row id="pdfbox" >
     <el-row>
-      <p id="title">论文预览</p>
+      <h2 id="title">论文预览</h2>
     </el-row>
     <el-row >
       <div>
-        <button @click="changePdfPage(0)">上一页</button>
+        <el-button type="text" style="padding-right: 10px;" @click="changePdfPage(0)">上一页</el-button>
         第{{page}}页/共{{pagenum}}页
-        <button @click="changePdfPage(1)">下一页</button>
+        <el-button type="text" @click="changePdfPage(1)">下一页</el-button>
       </div>
     </el-row>
     <el-row>
@@ -78,7 +78,8 @@
           ref="pdf"
           :page = "page"
           :src="pdfUrl"
-          @num-pages="pagenum=$event">
+          @num-pages="pagenum=$event"
+          style=" border:double">
         </pdf>
       </div>
     </el-row>
@@ -115,12 +116,25 @@ export default {
 </script>
 
 <style scoped>
-#title{
-  text-align: left;
-  margin-top: 30px
-}
+#pdfbox{
+  margin-left: 5%;
+  width: 75%;
+  margin-bottom: 30px;
+  box-shadow:3px 3px 5px 0px #787878;
+  background-color: #ffffff
 
+}
+#title{
+  padding-left: 20px;
+  text-align: left;
+  margin-top: 30px;
+  color: #4a83e7;
+}
 #display{
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 3px;
+  margin-bottom: 3%;
 
 }
 </style>
