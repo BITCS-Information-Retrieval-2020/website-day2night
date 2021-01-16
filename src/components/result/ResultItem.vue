@@ -8,6 +8,7 @@
           <span class="titleSpan">{{ title }}</span>
         </p>
       </el-row>
+
       <!-- 第一个文章的作者、出版机构、时间 -->
       <el-row class="profileRow">
         <p class="text1">
