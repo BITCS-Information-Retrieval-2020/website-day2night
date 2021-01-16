@@ -177,8 +177,8 @@ a {
 }
 #main {
     background-color:rgba(242, 242, 242, 1);
-        display: flex;
-        flex-wrap: wrap
+    display: block;
+    flex-wrap: wrap
 }
 #side {
   top:10px;
@@ -194,7 +194,7 @@ a {
   text-transform:none;
   background-color:rgba(255, 255, 255, 0);
   text-align:left;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
 
 }
