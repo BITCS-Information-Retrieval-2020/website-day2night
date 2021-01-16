@@ -56,9 +56,7 @@ export default {
   name: "introducton",
   props:["detail"],
   data() {
-    return {
-      abstract:"Effective palliation of malignant biliary obstruction with conventional 10 or 12 French gauge straight polyethylene endoprostheses is limited by stent occlusion, which typically occurs four to five months after insertion. Short term follow up studies of self expanding metal stents (Wallstent, Schneider, UK) in the treatment of patients with malignant biliary obstruction have shown that their use is associated with fewer episodes of stent occlusion compared with plastic stents. There are few data, however, on the longterm patency and durability of metal stents in malignant disease. Between May 1989 and May 1992, metal stents were inserted in 28 patients with malignant bile duct strictures secondary to ampullary tumour (n = 10), pancreatic carcinoma (n = 10), cholangiocarcinoma (n = 7), and porta hepatis nodes from colorectal carcinoma (n = 1). The follow up of these patients until May 1993 is reported with a median follow up of 14.6 months. Twenty two of 28 (78.6%) patients remained free of jaundice or cholangitis. The median period of stent patency was 8.2 months (range 1.0-32.5). Thirteen patients represented with jaundice or cholangitis and endoscopic retrograde",
-    }
+    return {}
   },
   computed: {
     title(){
@@ -70,22 +68,18 @@ export default {
     author() {
       return this.detail.authors
     },
+    abstract() {
+      return this.detail.abstract
+      // let t=this.detail.pdfText
+      // return t.substring(0,1000)
+    },
     paperurl() {
-      if (this.detail.publicationUrl=="") {
-        return "无"
-      }
-      return this.detail.publicationUrl
+      return this.detail.pdfUrl
     },
     codeurl() {
-      if (this.detail.codeUrl=="") {
-        return "无"
-      }
       return this.detail.codeUrl
     },
     videourl() {
-      if (this.detail.videoUrl=="") {
-        return "无"
-      }
       return this.detail.videoUrl
     },
     source() {
@@ -104,7 +98,7 @@ export default {
 #introbar{
   margin-top: 20px;
   width: 90%;
-  margin-left: 5%;
+  margin-left: 7%;
   margin-bottom: 20px;
 }
 #info{

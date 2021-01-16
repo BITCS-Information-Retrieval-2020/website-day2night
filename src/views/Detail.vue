@@ -3,7 +3,10 @@
     <search-bar @searchResults="searchResults"></search-bar>
 
     <introducton :detail="detail"></introducton>
-    <Pdf></Pdf>
+    <Pdf :detail="detail"></Pdf>
+    <videocomponent></videocomponent>
+    {{detail}}
+    <div></div>
   </div>
 </template>
 
@@ -12,12 +15,14 @@ import SearchBar from "common/SearchBar"
 import introducton from "components/detail/introducton"
 import { detailApi } from "request"
 import Pdf from "components/detail/Pdfcomponents"
+import videocomponent from "components/detail/videocomponent"
 export default {
   name: "Detail",
   components: {
     Pdf,
     SearchBar,
     introducton,
+    videocomponent,
   },
   data() {
     return {
