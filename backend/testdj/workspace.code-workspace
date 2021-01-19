@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://ssh-remote+10.28.1.192/home/sbli/ner_competition"
+		},
+		{
+			"uri": "vscode-remote://ssh-remote+10.28.1.192/home/sbli/水利NER"
+		}
+	],
+	"remoteAuthority": "ssh-remote+10.28.1.192",
+	"settings": {}
+}
