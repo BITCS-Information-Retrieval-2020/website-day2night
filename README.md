@@ -52,13 +52,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
   浏览器输入http://localhost:8080/#/home
 
-- Result.vue 搜索结果页
+- Result.vue 搜索结果页，请勿直接进入此页面，否则页面没有数据.可以通过主页搜索，或在这个页面搜索
 
   浏览器输入http://localhost:8080/#/result
 
-- Detail.vue 论文详情页
+- Detail.vue 论文详情页，请勿直接进入此页面，否则页面没有数据
 
-  浏览器输入http://localhost:8080/#/detail
+  浏览器输入http://localhost:8080/#/detail?id=
 
 ### 参考资料
 
