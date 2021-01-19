@@ -1,5 +1,11 @@
 # irdisplay
 
+
+后端请切换到backend分支
+
+以下为前端说明，前端请先安装c++支持库，可以选择安装Visual Studio(推荐)或者npm install -g windows-build-tools
+前端读取后台端口请在vue.config.js中target一项设置，并设置为后台地址端口。
+
 ## Project setup
 
 ```
