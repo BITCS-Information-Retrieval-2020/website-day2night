@@ -1,5 +1,9 @@
 # irdisplay
 
+
+后端请切换到backend分支
+以下为前端说明，前端请先安装c++支持库，可以选择安装VS或者npm install -g windows-build-tools
+
 ## Project setup
 
 ```
