@@ -4,9 +4,9 @@
       <h2 id="title">视频播放</h2>
     </el-row>
     <el-row  style="text-align: left; padding-left: 50px">
-      <p v-if="this.VUrl.length<=0" style="margin-top: 1px">无视频</p>
+      <p v-if="this.detail.videoPath.length<=0" style="margin-top: 1px">无视频</p>
     </el-row>
-    <el-row class='demo' v-if="this.VUrl.length>0">
+    <el-row class='demo' v-if="this.detail.videoPath.length>0">
       <video-player class="video-player vjs-custom-skin"
                   ref="videoPlayer"
                   :playsinline="true"
@@ -20,7 +20,8 @@
 <!--    >-->
       </video-player>
     </el-row>
-    <el-row id="downBtn" v-if="this.VUrl.length>0">
+    <el-row id="downBtn" v-if="this.detail.videoPath.length>0">
+<!--      {{this.playerOptions.sources[0].src}}-->
       <el-button  type="text"  @click="download"><span class="el-icon-download" style="font-size:20px;"></span></el-button>
     </el-row>
   </el-row>
@@ -31,7 +32,7 @@ import { videoPlayer } from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 export default {
   name: "videocomponent",
-  props: ["VUrl"],
+  props:["detail"],
   components: {
     videoPlayer
   },
@@ -48,8 +49,7 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: "video/mp4", // 类型
-          // src: "https://www.w3school.com.cn /i/movie.mp4" //this.
-          src: this.VUrl,
+          src: "https://www.w3school.com.cn /i/movie.mp4"
         }],
         poster: './public/bg.png', // 封面地址
         notSupportedMessage: '此视频暂无法播放', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
@@ -64,16 +64,13 @@ export default {
   },
   methods: {
     download(){
-      window.location.href = this.VUrl
+      window.location.href = this.detail.videoPath
     }
   },
-  mounted() {
-    this.playerOptions.sources[0].src = this.VUrl,
+  mounted:function () {
+    this.playerOptions.sources[0].src = this.detail.videoPath,
     console.log(this.playerOptions.sources[0].src)
   }
-  // computed:{
-  //   playerOptions.sources[0]=""
-  // }
 }
 </script>
 

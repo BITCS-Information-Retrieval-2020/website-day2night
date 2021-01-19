@@ -3,7 +3,7 @@
     <search-bar @searchResults="searchResults"></search-bar>
     <introducton :detail="detail"></introducton>
     <Pdf :detail="detail"></Pdf>
-    <videocomponent :VUrl="detail.videoPath"></videocomponent>
+    <videocomponent :detail="detail"></videocomponent>
 <!--    <div>-->
 <!--      {{detail}}-->
 <!--    </div>-->
