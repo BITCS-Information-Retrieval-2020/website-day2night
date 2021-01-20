@@ -1,4 +1,64 @@
-# 接口文档
+# website-day2night后端部分
+
+基于Python Django库实现
+
+
+## 启动流程
+
+### 环境要求及库依赖
+- python 3.0+
+
+
+| 依赖库  |  版本 | 
+| :----------------------------------------------------------: | :----------------------------------------------------------: | 
+|         Django               |3.1.5 |
+|    redis         |    3.5.3|
+|    fitz         |   0.0.1.dev2|
+|    ScienceSearcher         |    1.0.3|
+
+- ScienceSearcher 是检索组提供的包，安装方式如下：
+
+~~~
+# If you want to obtain the latest version of our package, please clone the repository
+git clone https://github.com/BITCS-Information-Retrieval-2020/search-rattailcollagen1.git
+cd search-rattailcollagen1
+# Make sure you have the versions of dependencies in requirements.txt
+pip install -r requirements.txt
+~~~
+
+### 运行项目
+~~~
+$ git clone https://github.com/BITCS-Information-Retrieval-2020/website-day2night.git 
+$ cd website-day2night
+$ git branch
+$ git checkout -b backend origin/backend     //切换后端分支
+~~~
+website-day2night文件夹下的backend为工程文件，进入后，执行命令行
+~~~
+python manage.py runserver 0.0.0.0:80
+~~~
+注意事项
+1. public_url 替换为本地服务器ip以及端口
+2. 第一次使用会下载论文数据，检索接口中的download_sever_ip,download_client_ip,es_ip,index_name,video_index_name需要向检索组获取。
+3. public_path 需替换为论文数据的路径
+### 后端目录结构
+~~~
+
+├─ backend
+│	├─ testdj
+│      ├─ static	
+│      ├─ _init_py 	
+│  	├─ asgi.py  	
+│ 		├─ settings.py 	
+│  	├─ urls.py  	
+│  	├─ view.py  	
+│  	├─ wsgi.py  	
+│	├─ db.sqlite3      	
+│	├─ manage.py      	
+
+~~~
+
+## 后端响应请求类型及接口文档
 ### 1. 检索结果页
 描述：返回检索结果
 #### URL   
@@ -44,11 +104,13 @@ JSON
 
 #### 返回结果说明
 返回 {"totalnum": totalnum, "resultData": [{},{},{},……]}
+
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
 | totalnum    | int    |返回结果总数 |
 
 resultData每一个{}中
+
 | 参数       | 类型     | 描述     |
 | ------------- |:----------:| ---------:|
 | _id         | int    |文章唯一id |
@@ -300,3 +362,23 @@ JSON
                   
 ]} 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
