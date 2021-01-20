@@ -46,8 +46,8 @@ python manage.py runserver 0.0.0.0:80
 
 ├─ backend
 │	├─ testdj
-│      ├─ static	
-│      ├─ _init_py 	
+│      	├─ static	
+│      	├─ _init_py 	
 │  	├─ asgi.py  	
 │ 		├─ settings.py 	
 │  	├─ urls.py  	
